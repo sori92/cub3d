@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/27 18:46:18 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:10:39 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string.h>
 # include <fcntl.h>
 # include <stddef.h>
+# include "map.h"
 
 typedef struct s_mlx
 {
@@ -30,11 +31,10 @@ typedef struct s_mlx
 typedef struct s_cub
 {
 	t_mlx	mlx;
-	
-	char	**map;
+	t_map	map;
 }	t_cub;
 
 char	**create_map(char *map_file);
-int	print_error(char *str);
+int		print_error(char *str);
 
 #endif

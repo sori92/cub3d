@@ -1,5 +1,6 @@
 SRC = main.c\
 	create_map.c\
+	print_error.c\
 
 CC = cc
 OBJS = $(SRC:.c=.o)
