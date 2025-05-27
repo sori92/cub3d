@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/27 19:10:39 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/27 21:00:13 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ typedef struct s_mlx
 	void	*ptr;
 }	t_mlx;
 
-
-
 typedef struct s_cub
 {
 	t_mlx	mlx;
@@ -36,5 +34,8 @@ typedef struct s_cub
 
 char	**create_map(char *map_file);
 int		print_error(char *str);
-
+void	free_array(char **array, size_t len);
+void	free_all(t_cub *game);
+size_t	ft_arraylen(char **array);
+void	ft_printarray(char **array, char *name);
 #endif

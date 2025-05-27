@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:30:09 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/27 19:43:55 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/27 21:00:19 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,25 @@ int	error_in_args(int argc, char **argv)
 	return (0);
 }
 
-void	init(t_cub	*cub, char *map_file)
+void	init(t_cub	*cube, char *map_file)
 {
 	char	*file;
 
 	file = ft_strdup(map_file);
 	if (!file)
 	{
+		free(map_file);
 		print_error("Error of ft_strdup in init\n");
 		exit(1);
 	}
-	cub->map.map_array = create_map(file);
-	if (!cub->map.map_array)
+	cube->map.file_array = create_map(file);
+	free(file);
+	if (!cube->map.file_array)
 	{
-		free(file);
+		free_all(cube);
 		exit (1);
 	}
+	ft_printarray(cube->map.file_array, "map");
 }
 
 int	main(int argc, char **argv)
@@ -84,5 +87,6 @@ int	main(int argc, char **argv)
 	if (error_in_args(argc, argv))
 		return (1);
 	init(&cube, argv[1]);
+	free_all(&cube);
 	return (0);
 }

@@ -1,6 +1,10 @@
 SRC = main.c\
 	create_map.c\
 	print_error.c\
+	ft_arraylen.c\
+	ft_printarray.c\
+	free/free_array.c\
+	free/free_all.c\
 
 CC = cc
 OBJS = $(SRC:.c=.o)

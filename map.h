@@ -8,7 +8,7 @@
 
 typedef struct s_map
 {
-	char	**map_array;
+	char	**file_array;
 }	t_map;
 
 
