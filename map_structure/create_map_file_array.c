@@ -6,11 +6,24 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:34:37 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 15:34:37 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/29 18:35:27 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int	is_directory(char *map_file)
+{
+	int fd;
+	
+	fd = open(map_file, __O_DIRECTORY);
+	if (fd > -1)
+	{
+		close(fd);
+		return (1);
+	}
+	return (0);
+}
 
 size_t	count_lines(char *map_file)
 {
@@ -18,6 +31,11 @@ size_t	count_lines(char *map_file)
 	char	*line;
 	int		fd;
 
+	if (is_directory(map_file))
+	{
+		print_error("Map argument is a directory\n");
+		return (0);
+	}
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 	{

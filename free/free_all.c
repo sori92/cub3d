@@ -6,11 +6,25 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 20:22:59 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 14:35:34 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/29 18:35:06 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	free_mlx(t_cub *game)
+{
+	if (game->mlx.ptr)
+	{
+		if (game->mlx.win)
+		{
+			mlx_clear_window(game->mlx.ptr, game->mlx.win);
+			mlx_destroy_window(game->mlx.ptr, game->mlx.win);
+		}
+		mlx_destroy_display(game->mlx.ptr); // en Linux
+		free(game->mlx.ptr);
+	}
+}
 
 void	free_all(t_cub *game)
 {
@@ -30,4 +44,5 @@ void	free_all(t_cub *game)
 		free(game->map.color.c);
 	if (game->map.matrix)
 		free_array(game->map.matrix, ft_arraylen(game->map.matrix));
+	free_mlx(game);
 }

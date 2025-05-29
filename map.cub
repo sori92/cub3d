@@ -1,17 +1,13 @@
-  		NO           ./ruta/al_archivo
-      SO          ./ruta/al_archivo
-WE ./ruta/al_archivo
-EA ./ruta/al_archivo
+  		NO           ./textures/file.png
+      SO          ./textures/file2.png
+WE ./textures/file3.png
+EA ./textures/file4.png
 
 
 
-F 255,255,255
-C 0,0,0
+F 255, 255,255
+C 23,23,232
 
-
-
-hdfassjkdhdfjs
-
-111111111111111
-1000000N00000001
-111111111111111
+11111111111111111111
+10000000000000000001
+11111111111111111111

@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:34:42 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 15:34:42 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/29 20:32:56 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,56 @@ char	*fill_path(char **line, char *cardinal, t_cub *game)
 		{
 			free_array(line, ft_arraylen(line));
 			free_all(game);
-			print_error("Can't create NO texture path array\n");
+			print_error("Can't create texture path array\n");
 		}
 	}
 	return (field);
 }
+
+char	*color_aux_func(char **line, t_cub *game)
+{
+	char	*field;
+	char	*aux0;
+	
+	field = NULL;
+	if (ft_arraylen(line) == 2)
+	{
+		field = ft_strdup(line[1]);
+		if (!field)
+		{
+			free_array(line, ft_arraylen(line));
+			free_all(game);
+			print_error("Can't create texture path array\n");
+			return (NULL);
+		}
+		return (field);
+	}
+	if (line[2])
+		aux0 = ft_strjoin(line[1], line[2]);
+	if (line[3])
+		field = ft_strjoin(aux0, line[3]);
+	else
+		return(aux0);
+	free(aux0);
+	return (field);
+}
+char	*fill_color(char **line, char *to_fill, t_cub *game)
+{
+	char	*field;
+
+	field = NULL;
+	if (ft_arraylen(line) < 2 || ft_arraylen(line) > 4)
+	{
+		free_array(line, ft_arraylen(line));
+		free_all(game);
+		print_error("Floor and Ceiling fields must be in the following format\n");
+		exit(ft_putstr_fd("[F/C] [255,255,255]\n", 2));
+	}
+	if (ft_strcmp(line[0], to_fill) == 0)
+		field = color_aux_func(line, game);
+	return (field);
+}
+
 
 void	asign_paths(t_cub *game, char **line)
 {
@@ -48,9 +93,9 @@ void	asign_paths(t_cub *game, char **line)
 	if (!game->map.paths.ea)
 		game->map.paths.ea = fill_path(line, "EA", game);
 	if (!game->map.color.f)
-		game->map.color.f = fill_path(line, "F", game);
+		game->map.color.f = fill_color(line, "F", game);
 	if (!game->map.color.c)
-		game->map.color.c = fill_path(line, "C", game);
+		game->map.color.c = fill_color(line, "C", game);
 }
 
 size_t	cpy_paths_and_colors(t_cub *game)

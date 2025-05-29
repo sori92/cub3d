@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:31:50 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 15:32:00 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/29 17:56:47 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,19 @@ typedef struct s_paths
 typedef struct s_rgb
 {
 	char	*f;
+	int		fr;
+	int		fg;
+	int		fb;
 	char	*c;
-}	t_clrs;
+	int		cr;
+	int		cg;
+	int		cb;
+}	t_rgb;
 
 typedef struct s_map
 {
 	t_paths	paths;
-	t_clrs	color;
+	t_rgb	color;
 	char	**matrix;
 	char	**file_array;
 }	t_map;
