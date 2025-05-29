@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:08:48 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 18:31:20 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/29 22:37:45 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,16 @@ void	init_null(t_cub *game)
 	game->map.paths.ea = NULL;
 	game->map.paths.we = NULL;
 	game->map.color.f = NULL;
+	game->map.color.fr = 0;
+	game->map.color.fg = 0;
+	game->map.color.fb = 0;
 	game->map.color.c = NULL;
+	game->map.color.cr = 0;
+	game->map.color.cg = 0;
+	game->map.color.cb = 0;
 	game->map.matrix = NULL;
+	game->plyr.y = 0;
+	game->plyr.x = 0;
 	game->mlx.ptr = NULL;
 	game->mlx.win = NULL;
 }

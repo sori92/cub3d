@@ -1,6 +1,8 @@
 SRC = main.c\
 	print_error.c\
 	init.c\
+	parsers/clean_nl.c\
+	parsers/flood_fill.c\
 	parsers/texture_parser.c\
 	parsers/matrix_parser.c\
 	parsers/extension.c\
@@ -14,6 +16,7 @@ SRC = main.c\
 	utils/split_by_space.c\
 	utils/ft_arraylen.c\
 	utils/ft_printarray.c\
+	utils/ft_arraydup.c\
 	mlx_display/close_win.c\
 	mlx_display/handle.c\
 

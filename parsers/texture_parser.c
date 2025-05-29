@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture_parser.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/30 00:19:48 by jrubio-m          #+#    #+#             */
+/*   Updated: 2025/05/30 00:29:38 by jrubio-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 int	wrong_texture_file(char *texture, char *type)
@@ -17,11 +29,16 @@ int	wrong_texture_file(char *texture, char *type)
 	return (0);
 }
 
-int wrong_rgb_range(char *field, char **rgb)
+int	wrong_rgb_format(char *field, char **rgb, t_cub *game)
 {
 	size_t	i;
 
 	i = 0;
+	if (!rgb)
+	{
+		free_all(game);
+		exit(print_error("Error doing split for check rgb range\n"));
+	}
 	while (rgb[i])
 	{
 		if (!str_is_digit(rgb[i]) || ft_arraylen(rgb) != 3)
@@ -43,7 +60,7 @@ int	check_and_asign_colors(t_cub *game)
 
 	ret = 1;
 	rgb = ft_split(game->map.color.f, ',');
-	if (wrong_rgb_range("Floor", rgb))
+	if (wrong_rgb_format("Floor", rgb, game))
 		ret = 0;
 	else
 	{
@@ -53,7 +70,7 @@ int	check_and_asign_colors(t_cub *game)
 		free_array(rgb, ft_arraylen(rgb));
 	}
 	rgb = ft_split(game->map.color.c, ',');
-	if (wrong_rgb_range("Celine", rgb))
+	if (wrong_rgb_format("Celine", rgb, game))
 		ret = 0;
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 19:12:22 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 00:18:10 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,15 @@ typedef struct s_mlx
 	void	*ptr;
 }	t_mlx;
 
+typedef struct s_plyr
+{
+	size_t	x;
+	size_t	y;
+}	t_plyr;
+
 typedef struct s_cub
 {
+	t_plyr	plyr;
 	t_mlx	mlx;
 	t_map	map;
 }	t_cub;
@@ -39,6 +46,7 @@ int		str_is_digit(char *str);
 char	**split_by_space(char *str);
 size_t	ft_arraylen(char **array);
 void	ft_printarray(char **array, char *name);
+char	**ft_arraydup(char **array);
 //
 
 // ERRORS
@@ -63,6 +71,11 @@ void	make_map_matrix(size_t l, t_cub *game);
 //
 
 // PARSERS
+void	clean_matrix(t_cub *game);
+void	clean_paths_and_colors(t_cub *game);
+char	*errase_newline(char *str);
+int		flood_fill(char **map, int y, int x, int lnes);
+void	check_for_player(t_cub *game);
 void	check_texture_routes_and_colors(t_cub *game);
 void	check_chars_and_empty_lines(t_cub *game);
 int		extension_check(char *str, char *ext);
@@ -75,8 +88,8 @@ void	init_null(t_cub *game);
 //
 
 // MLX
-int	close_window(t_cub *game);
-int	handle(int key, t_cub *game);
+int		close_window(t_cub *game);
+int		handle(int key, t_cub *game);
 //
 
 #endif

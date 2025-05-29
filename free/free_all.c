@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 20:22:59 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 18:35:06 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 00:22:55 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	free_mlx(t_cub *game)
 			mlx_clear_window(game->mlx.ptr, game->mlx.win);
 			mlx_destroy_window(game->mlx.ptr, game->mlx.win);
 		}
-		mlx_destroy_display(game->mlx.ptr); // en Linux
+		mlx_destroy_display(game->mlx.ptr);
 		free(game->mlx.ptr);
 	}
 }

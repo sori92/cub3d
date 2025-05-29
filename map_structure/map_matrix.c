@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:34:40 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 18:29:38 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 00:20:41 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ size_t	count_matrix_lines(size_t l, t_cub *game)
 	}
 	return (lines);
 }
-
 
 void	make_map_matrix(size_t l, t_cub *game)
 {

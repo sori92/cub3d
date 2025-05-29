@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:34:42 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 20:32:56 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 00:26:23 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*color_aux_func(char **line, t_cub *game)
 {
 	char	*field;
 	char	*aux0;
-	
+
 	field = NULL;
 	if (ft_arraylen(line) == 2)
 	{
@@ -60,10 +60,11 @@ char	*color_aux_func(char **line, t_cub *game)
 	if (line[3])
 		field = ft_strjoin(aux0, line[3]);
 	else
-		return(aux0);
+		return (aux0);
 	free(aux0);
 	return (field);
 }
+
 char	*fill_color(char **line, char *to_fill, t_cub *game)
 {
 	char	*field;
@@ -73,14 +74,14 @@ char	*fill_color(char **line, char *to_fill, t_cub *game)
 	{
 		free_array(line, ft_arraylen(line));
 		free_all(game);
-		print_error("Floor and Ceiling fields must be in the following format\n");
-		exit(ft_putstr_fd("[F/C] [255,255,255]\n", 2));
+		print_error("Floor and Ceiling fields must be in the format :");
+		ft_putendl_fd(" [F/C] [255,255,255]", 2);
+		exit(1);
 	}
 	if (ft_strcmp(line[0], to_fill) == 0)
 		field = color_aux_func(line, game);
 	return (field);
 }
-
 
 void	asign_paths(t_cub *game, char **line)
 {

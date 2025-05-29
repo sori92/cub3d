@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extension.c                                        :+:      :+:    :+:   */
+/*   ft_arraydup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 00:20:11 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 00:20:11 by jrubio-m         ###   ########.fr       */
+/*   Created: 2025/05/30 00:24:07 by jrubio-m          #+#    #+#             */
+/*   Updated: 2025/05/30 00:24:27 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	extension_check(char *str, char *ext)
+char	**ft_arraydup(char **array)
 {
 	size_t	i;
-	size_t	j;
-	int		is;
+	char	**new_array;
 
-	is = 0;
 	i = 0;
-	while (str[i])
+	new_array = malloc(sizeof(char *) * (ft_arraylen(array) + 1));
+	if (!new_array)
+		return (NULL);
+	while (array[i])
 	{
-		j = 0;
-		while (ext[j] && str[i] && str[i] == ext[j])
+		new_array[i] = ft_strdup(array[i]);
+		if (!new_array[i])
 		{
-			j++;
-			i++;
+			free_array(new_array, i);
+			return (NULL);
 		}
-		if (j == ft_strlen(ext) && str[i])
-			return (0);
-		if (str[i])
-			i++;
+		i++;
 	}
-	if (j == ft_strlen(ext))
-		is = 1;
-	return (is);
+	new_array[i] = NULL;
+	return (new_array);
 }

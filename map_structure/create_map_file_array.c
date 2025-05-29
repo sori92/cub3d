@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:34:37 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 18:35:27 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 00:09:26 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	is_directory(char *map_file)
 {
-	int fd;
-	
+	int	fd;
+
 	fd = open(map_file, __O_DIRECTORY);
 	if (fd > -1)
 	{
@@ -25,9 +25,8 @@ int	is_directory(char *map_file)
 	return (0);
 }
 
-size_t	count_lines(char *map_file)
+size_t	count_lines(char *map_file, size_t nlines)
 {
-	size_t	nlines;
 	char	*line;
 	int		fd;
 
@@ -42,7 +41,6 @@ size_t	count_lines(char *map_file)
 		print_error("Can't open map file\n");
 		return (0);
 	}
-	nlines = 0;
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -82,7 +80,7 @@ char	**create_map_file_array(char *map_file)
 	char	**map;
 	int		fd;
 
-	lnes = count_lines(map_file);
+	lnes = count_lines(map_file, 0);
 	if (lnes == 0)
 		return (NULL);
 	fd = open(map_file, O_RDONLY);

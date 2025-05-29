@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:30:09 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 20:41:53 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/29 23:58:32 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 	init(&game, ft_strdup(argv[1]));
 	parser(&game);
 	game.mlx.ptr = mlx_init();
-	game.mlx.win = mlx_new_window(game.mlx.ptr, 600, 600, "GAME");
+	game.mlx.win = mlx_new_window(game.mlx.ptr, 500, 500, "GAME");
 	mlx_key_hook(game.mlx.win, handle, &game);
 	mlx_hook(game.mlx.win, 17, 0, close_window, &game);
 	mlx_loop(game.mlx.ptr);
