@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../cub3d.h"
 
 size_t	count_lines(char *map_file)
 {
@@ -46,7 +46,7 @@ char	**create_map_array(int fd, size_t len, size_t i)
 	return (map);
 }
 
-char	**create_map(char *map_file)
+char	**create_map_file_array(char *map_file)
 {
 	size_t	lnes;
 	char	**map;

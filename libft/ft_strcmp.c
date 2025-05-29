@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arraylen.c                                      :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 20:53:04 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/27 20:25:25 by jrubio-m         ###   ########.fr       */
+/*   Created: 2025/01/14 16:18:40 by jrubio-m          #+#    #+#             */
+/*   Updated: 2025/05/28 16:57:16 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-size_t	ft_arraylen(char **array)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
 
 	i = 0;
-	if (!array)
-		return (0);
-	while (array[i])
+	while (s1[i] && s1[i] == s2[i])
 		i++;
-	return (i);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

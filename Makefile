@@ -1,10 +1,14 @@
 SRC = main.c\
-	create_map.c\
 	print_error.c\
-	ft_arraylen.c\
-	ft_printarray.c\
+	init.c\
+	map_structure/create_map_file_array.c\
+	map_structure/map_matrix.c\
+	map_structure/texture_paths.c\
 	free/free_array.c\
 	free/free_all.c\
+	utils/split_by_space.c\
+	utils/ft_arraylen.c\
+	utils/ft_printarray.c\
 
 CC = cc
 OBJS = $(SRC:.c=.o)
