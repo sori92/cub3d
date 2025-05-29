@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:08:48 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 14:13:15 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:32:38 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_map_struct(t_cub *game)
 
 	l = cpy_paths_and_colors(game);
 	if (!game->map.paths.no || !game->map.paths.so || !game->map.paths.we
-			|| !game->map.paths.ea || !game->map.color.f || !game->map.color.c)
+		|| !game->map.paths.ea || !game->map.color.f || !game->map.color.c)
 	{
 		free_all(game);
 		exit (print_error("Wrong map file structure\n"));

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_map_file_array.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/29 15:34:37 by jrubio-m          #+#    #+#             */
+/*   Updated: 2025/05/29 15:34:37 by jrubio-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 size_t	count_lines(char *map_file)
@@ -52,7 +64,7 @@ char	**create_map_file_array(char *map_file)
 	char	**map;
 	int		fd;
 
-	lnes = count_lines(map_file); // Cuento las lineas para posterior malloc
+	lnes = count_lines(map_file);
 	if (lnes == 0)
 		return (NULL);
 	fd = open(map_file, O_RDONLY);

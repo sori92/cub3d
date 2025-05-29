@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 14:18:09 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:32:53 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_cub
 	t_mlx	mlx;
 	t_map	map;
 }	t_cub;
-
 
 // UTILS
 char	**split_by_space(char *str);

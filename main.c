@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:30:09 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 14:37:27 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:31:31 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	is_cub(char *str, char *cub)
 int	error_in_args(int argc, char **argv)
 {
 	char	*map_file;
-	
+
 	if (argc != 2)
 		return (print_error("Invalid number of args\n"
-			"Expected: ./cub3D example.cub"));
+				"Expected: ./cub3D example.cub"));
 	map_file = ft_strdup(argv[1]);
 	if (!map_file)
 		return (1);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture_paths.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/29 15:34:42 by jrubio-m          #+#    #+#             */
+/*   Updated: 2025/05/29 15:34:42 by jrubio-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 char	*fill_path(char **line, char *cardinal, t_cub *game)
@@ -5,7 +17,6 @@ char	*fill_path(char **line, char *cardinal, t_cub *game)
 	char	*field;
 
 	field = NULL;
-
 	if (ft_arraylen(line) != 2)
 	{
 		free_array(line, ft_arraylen(line));

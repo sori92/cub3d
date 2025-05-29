@@ -1,5 +1,16 @@
-#include "../cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_matrix.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/29 15:34:40 by jrubio-m          #+#    #+#             */
+/*   Updated: 2025/05/29 15:34:40 by jrubio-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../cub3d.h"
 
 void	check_if_map_exists(size_t *l, t_cub *game)
 {
@@ -12,23 +23,19 @@ void	check_if_map_exists(size_t *l, t_cub *game)
 	}
 }
 
-size_t	check_empty_lnes_and_cnt(size_t l, t_cub *game)
+size_t	count_matrix_lines(size_t l, t_cub *game)
 {
-	size_t lines;
+	size_t	lines;
 
 	lines = 0;
 	while (game->map.file_array[l])
 	{
-		if (game->map.file_array[l][0] == '\n')
-		{
-			free_all(game);
-			exit (print_error("Empty line in the map matrix\n"));
-		}
 		lines++;
 		l++;
 	}
 	return (lines);
 }
+
 void	make_map_matrix(size_t l, t_cub *game)
 {
 	size_t	lines;
@@ -36,7 +43,7 @@ void	make_map_matrix(size_t l, t_cub *game)
 
 	y = 0;
 	check_if_map_exists(&l, game);
-	lines = check_empty_lnes_and_cnt(l, game);
+	lines = count_matrix_lines(l, game);
 	game->map.matrix = malloc(sizeof(char *) * (lines + 1));
 	if (!game->map.matrix)
 	{
