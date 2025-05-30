@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:39:33 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 14:48:29 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 15:21:35 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	asign_direction(char dir, t_cub *game)
 		game->plyr.dir_x = 1;
 		game->plyr.dir_y = 0;
 	}
-	if (dir == 'S')
+	if (dir == 'W')
 	{
 		game->plyr.dir_x = -1;
 		game->plyr.dir_y = 0;
