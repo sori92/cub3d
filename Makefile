@@ -18,9 +18,10 @@ SRC = main.c\
 	utils/ft_arraylen.c\
 	utils/ft_printarray.c\
 	utils/ft_arraydup.c\
-	mlx_display/init_display.c\
-	mlx_display/close_win.c\
-	mlx_display/handle.c\
+	display/init_display.c\
+	display/close_win.c\
+	display/handle.c\
+	display/draw.c\
 	player/init_player.c\
 
 CC = cc

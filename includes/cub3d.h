@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 14:51:59 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 23:29:12 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@
 # include <string.h>
 # include <fcntl.h>
 # include <stddef.h>
+# include <math.h>
 # include "map.h"
 # include "player.h"
 # include "minilbx.h"
 
 # define WIDTH  1024
 # define HEIGHT 768
+# define PI 3.14159265358979323846
 
 typedef struct s_cub
 {
@@ -63,6 +65,11 @@ void	make_map_matrix(size_t l, t_cub *game);
 
 // PLAYER
 void	init_player(t_cub *game);
+//
+
+// DISPLAY
+void	draw_win(t_cub *game);
+void	pixel_put(size_t x, size_t y, int color, t_cub *game);
 //
 
 // PARSERS
