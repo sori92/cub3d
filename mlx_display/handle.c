@@ -6,11 +6,11 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:23:46 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 00:23:46 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:28:22 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
 int	handle(int key, t_cub *game)
 {

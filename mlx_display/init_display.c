@@ -1,49 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   init_display.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/29 15:31:50 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 17:56:47 by jrubio-m         ###   ########.fr       */
+/*   Created: 2025/05/30 13:13:16 by jrubio-m          #+#    #+#             */
+/*   Updated: 2025/05/30 13:28:14 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
-# include "cub3d.h"
+#include "../includes/cub3d.h"
 
-/*
- * MIRAR MEJOR FORMA DE GUARDAR ESTO!!	
- */
-
-typedef struct s_paths
+void	init_display(t_cub *game)
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-}	t_paths;
-
-typedef struct s_rgb
-{
-	char	*f;
-	int		fr;
-	int		fg;
-	int		fb;
-	char	*c;
-	int		cr;
-	int		cg;
-	int		cb;
-}	t_rgb;
-
-typedef struct s_map
-{
-	t_paths	paths;
-	t_rgb	color;
-	char	**matrix;
-	char	**file_array;
-}	t_map;
-
-#endif
+	game->mlx.ptr = mlx_init();
+	game->mlx.win = mlx_new_window(game->mlx.ptr, WIN_WIDTH, WIN_HEIGHT, "GAME");
+	game->mlx.img = mlx_new_image(game->mlx.ptr, WIN_WIDTH, WIN_HEIGHT);
+	game->mlx.addr = mlx_get_data_addr(game->mlx.img, &game->mlx.bpp, &game->mlx.line_length, &game->mlx.endian);
+}

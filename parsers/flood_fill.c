@@ -6,11 +6,11 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:14:52 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 00:14:52 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:30:02 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
 int	flood_fill(char **map, int y, int x, int lnes)
 {

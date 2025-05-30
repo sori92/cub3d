@@ -6,33 +6,26 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 00:18:10 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:52:24 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# include "libft/libft.h"
-# include "minilibx-linux/mlx.h"
-# include "minilibx-linux/mlx_int.h"
+# include "../libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
 # include <fcntl.h>
 # include <stddef.h>
 # include "map.h"
+# include "player.h"
+# include "minilbx.h"
 
-typedef struct s_mlx
-{
-	void	*win;
-	void	*ptr;
-}	t_mlx;
-
-typedef struct s_plyr
-{
-	size_t	x;
-	size_t	y;
-}	t_plyr;
+#define WIN_WIDTH  1024
+#define WIN_HEIGHT 768
 
 typedef struct s_cub
 {
@@ -61,13 +54,15 @@ void	free_all(t_cub *game);
 
 // MAP
 char	**create_map_file_array(char *map_file);
-void	init_map_struct(t_cub *game);
-
 char	*fill_path(char **line, char *cardinal, t_cub *game);
 size_t	cpy_paths_and_colors(t_cub *game);
 void	asign_paths(t_cub *game, char **line);
 
 void	make_map_matrix(size_t l, t_cub *game);
+//
+
+// PLAYER
+void	init_player(t_cub *game);
 //
 
 // PARSERS
@@ -88,6 +83,7 @@ void	init_null(t_cub *game);
 //
 
 // MLX
+void	init_display(t_cub *game);
 int		close_window(t_cub *game);
 int		handle(int key, t_cub *game);
 //

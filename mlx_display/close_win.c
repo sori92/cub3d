@@ -6,11 +6,11 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:23:29 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 00:23:38 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:28:37 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
 int	close_window(t_cub *game)
 {

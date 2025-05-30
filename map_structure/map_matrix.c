@@ -6,11 +6,11 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:34:40 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 00:20:41 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:28:56 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
 void	check_if_map_exists(size_t *l, t_cub *game)
 {

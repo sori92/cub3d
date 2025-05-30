@@ -6,11 +6,11 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:18:43 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 00:19:36 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:30:08 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
 static void	check_char(char c, t_cub *game)
 {

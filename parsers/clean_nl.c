@@ -6,11 +6,11 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:18:02 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 00:24:59 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:29:52 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
 void	clean_matrix(t_cub *game)
 {

@@ -1,6 +1,7 @@
 SRC = main.c\
 	print_error.c\
-	init.c\
+	init/init_null.c\
+	init/init.c\
 	parsers/clean_nl.c\
 	parsers/flood_fill.c\
 	parsers/texture_parser.c\
@@ -17,8 +18,10 @@ SRC = main.c\
 	utils/ft_arraylen.c\
 	utils/ft_printarray.c\
 	utils/ft_arraydup.c\
+	mlx_display/init_display.c\
 	mlx_display/close_win.c\
 	mlx_display/handle.c\
+	player/init_player.c\
 
 CC = cc
 OBJS = $(SRC:.c=.o)

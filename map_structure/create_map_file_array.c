@@ -6,11 +6,11 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:34:37 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 00:09:26 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:28:48 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
 int	is_directory(char *map_file)
 {

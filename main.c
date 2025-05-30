@@ -6,11 +6,11 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:30:09 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 23:58:32 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:30:54 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "includes/cub3d.h"
 
 int	error_in_args(int argc, char **argv)
 {
@@ -40,8 +40,7 @@ int	main(int argc, char **argv)
 	init_null(&game);
 	init(&game, ft_strdup(argv[1]));
 	parser(&game);
-	game.mlx.ptr = mlx_init();
-	game.mlx.win = mlx_new_window(game.mlx.ptr, 500, 500, "GAME");
+	init_display(&game);
 	mlx_key_hook(game.mlx.win, handle, &game);
 	mlx_hook(game.mlx.win, 17, 0, close_window, &game);
 	mlx_loop(game.mlx.ptr);

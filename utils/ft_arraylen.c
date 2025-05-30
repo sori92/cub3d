@@ -6,11 +6,11 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 20:53:04 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 14:20:22 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:30:30 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
 size_t	ft_arraylen(char **array)
 {

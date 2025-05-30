@@ -6,11 +6,11 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:32:11 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/29 15:32:11 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:31:06 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "includes/cub3d.h"
 
 int	print_error(char *str)
 {

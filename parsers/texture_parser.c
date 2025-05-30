@@ -6,11 +6,11 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:19:48 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 00:29:38 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:30:19 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
 int	wrong_texture_file(char *texture, char *type)
 {
@@ -64,19 +64,19 @@ int	check_and_asign_colors(t_cub *game)
 		ret = 0;
 	else
 	{
-		game->map.color.fr = ft_atoi(rgb[0]);
-		game->map.color.fg = ft_atoi(rgb[1]);
-		game->map.color.fb = ft_atoi(rgb[2]);
+		game->map.color.floor.r = ft_atoi(rgb[0]);
+		game->map.color.floor.g = ft_atoi(rgb[1]);
+		game->map.color.floor.b = ft_atoi(rgb[2]);
 		free_array(rgb, ft_arraylen(rgb));
 	}
 	rgb = ft_split(game->map.color.c, ',');
-	if (wrong_rgb_format("Celine", rgb, game))
+	if (wrong_rgb_format("Ceilling", rgb, game))
 		ret = 0;
 	else
 	{
-		game->map.color.cr = ft_atoi(rgb[0]);
-		game->map.color.cg = ft_atoi(rgb[1]);
-		game->map.color.cb = ft_atoi(rgb[2]);
+		game->map.color.ceilling.r = ft_atoi(rgb[0]);
+		game->map.color.ceilling.g = ft_atoi(rgb[1]);
+		game->map.color.ceilling.b = ft_atoi(rgb[2]);
 		free_array(rgb, ft_arraylen(rgb));
 	}
 	return (ret);

@@ -6,11 +6,11 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 20:22:59 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 00:22:55 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:29:26 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
 void	free_mlx(t_cub *game)
 {
@@ -18,6 +18,8 @@ void	free_mlx(t_cub *game)
 	{
 		if (game->mlx.win)
 		{
+			if (game->mlx.img)
+				mlx_destroy_image(game->mlx.ptr, game->mlx.img);
 			mlx_clear_window(game->mlx.ptr, game->mlx.win);
 			mlx_destroy_window(game->mlx.ptr, game->mlx.win);
 		}
