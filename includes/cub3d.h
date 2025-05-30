@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 13:52:24 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:51:59 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include "player.h"
 # include "minilbx.h"
 
-#define WIN_WIDTH  1024
-#define WIN_HEIGHT 768
+# define WIDTH  1024
+# define HEIGHT 768
 
 typedef struct s_cub
 {

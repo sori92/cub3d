@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:19:48 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 13:30:19 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:47:34 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ int	check_and_asign_colors(t_cub *game)
 		free_array(rgb, ft_arraylen(rgb));
 	}
 	rgb = ft_split(game->map.color.c, ',');
-	if (wrong_rgb_format("Ceilling", rgb, game))
+	if (wrong_rgb_format("ceiling", rgb, game))
 		ret = 0;
 	else
 	{
-		game->map.color.ceilling.r = ft_atoi(rgb[0]);
-		game->map.color.ceilling.g = ft_atoi(rgb[1]);
-		game->map.color.ceilling.b = ft_atoi(rgb[2]);
+		game->map.color.ceiling.r = ft_atoi(rgb[0]);
+		game->map.color.ceiling.g = ft_atoi(rgb[1]);
+		game->map.color.ceiling.b = ft_atoi(rgb[2]);
 		free_array(rgb, ft_arraylen(rgb));
 	}
 	return (ret);

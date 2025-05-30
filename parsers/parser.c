@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:10:38 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 13:52:45 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:49:53 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ void	check_rgb_range(t_cub *game, t_clr colors)
 
 	error = 0;
 	if (colors.floor.r < 0 || colors.floor.g < 0 || colors.floor.b < 0
-		|| colors.ceilling.r < 0 || colors.ceilling.g < 0 || colors.ceilling.b < 0)
+		|| colors.ceiling.r < 0 || colors.ceiling.g < 0 || colors.ceiling.b < 0)
 		error = 1;
 	if (colors.floor.r > 255 || colors.floor.g > 255 || colors.floor.b > 255
-		|| colors.ceilling.r > 255 || colors.ceilling.g > 255 || colors.ceilling.b > 255)
+		|| colors.ceiling.r > 255 || colors.ceiling.g > 255
+		|| colors.ceiling.b > 255)
 		error = 1;
 	if (error)
 	{

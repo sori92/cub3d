@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:05:12 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 13:29:14 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:47:34 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static void	init_map_null(t_cub *game)
 	game->map.color.floor.g = 0;
 	game->map.color.floor.b = 0;
 	game->map.color.c = NULL;
-	game->map.color.ceilling.r = 0;
-	game->map.color.ceilling.g = 0;
-	game->map.color.ceilling.b = 0;
+	game->map.color.ceiling.r = 0;
+	game->map.color.ceiling.g = 0;
+	game->map.color.ceiling.b = 0;
 	game->map.matrix = NULL;
 }
 

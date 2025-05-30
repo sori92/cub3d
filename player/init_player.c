@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:39:33 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 13:46:03 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:48:29 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	find_player(char **matrix, t_cub *game, size_t y, size_t x)
 		}
 		y++;
 	}
+	return ('\0');
 }
 
 void	asign_direction(char dir, t_cub *game)
@@ -57,6 +58,7 @@ void	asign_direction(char dir, t_cub *game)
 void	init_player(t_cub *game)
 {
 	char	dir;
+
 	dir = find_player(game->map.matrix, game, 0, 0);
 	game->plyr.pos_x = game->plyr.x + 0.5;
 	game->plyr.pos_y = game->plyr.y + 0.5;

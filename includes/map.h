@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:31:50 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 12:41:06 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:50:21 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_clr
 	char	*f;
 	t_rgb	floor;
 	char	*c;
-	t_rgb	ceilling;
+	t_rgb	ceiling;
 }	t_clr;
 typedef struct s_map
 {
