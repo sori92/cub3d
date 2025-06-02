@@ -21,6 +21,7 @@ SRC = main.c\
 	display/init_display.c\
 	display/close_win.c\
 	display/handle.c\
+	display/movements.c\
 	display/draw.c\
 	player/init_player.c\
 

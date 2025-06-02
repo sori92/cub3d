@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:05:12 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 14:47:34 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/02 21:26:45 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,11 @@ void	init_null(t_cub *game)
 	game->plyr.y = 0;
 	game->plyr.x = 0;
 	init_mlx_null(game);
+	game->keys.a = 0;
+	game->keys.d = 0;
+	game->keys.w = 0;
+	game->keys.s = 0;
+	game->keys.l = 0;
+	game->keys.r = 0;
+	game->input_cnt = 0;
 }

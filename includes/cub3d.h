@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 23:29:12 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/02 22:46:38 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,30 @@
 # include "player.h"
 # include "minilbx.h"
 
+# define SPEED 0.03
+# define PL_RAD 0.5
 # define WIDTH  1024
 # define HEIGHT 768
 # define PI 3.14159265358979323846
+# define INPUT_DELAY 0.1
+
+typedef struct s_keys
+{
+	int	w;
+	int	s;
+	int	a;
+	int	d;
+	int	r;
+	int	l;
+}	t_keys;
 
 typedef struct s_cub
 {
+	t_keys	keys;
 	t_plyr	plyr;
 	t_mlx	mlx;
 	t_map	map;
+	double	input_cnt;
 }	t_cub;
 
 // UTILS
@@ -65,6 +80,9 @@ void	make_map_matrix(size_t l, t_cub *game);
 
 // PLAYER
 void	init_player(t_cub *game);
+int		move_fward(t_cub *game, int dir);
+int		move_side(t_cub *game, int dir);
+int		rotation(t_cub *game, int dir);
 //
 
 // DISPLAY
@@ -93,6 +111,7 @@ void	init_null(t_cub *game);
 void	init_display(t_cub *game);
 int		close_window(t_cub *game);
 int		handle(int key, t_cub *game);
+int		handle_keys(t_cub *game);
 //
 
 #endif
