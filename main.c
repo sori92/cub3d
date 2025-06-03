@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:30:09 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/02 22:35:32 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/03 19:44:50 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	error_in_args(int argc, char **argv)
 
 int	key_press(int key, t_cub *game)
 {
+	if (key == XK_Escape)
+		return (close_window(game));
 	if (key == XK_a)
 		game->keys.a = 1;
 	if (key == XK_d)

@@ -6,13 +6,32 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 23:25:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/02 22:49:49 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/03 19:43:29 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static void	draw_cell(t_cub *game, size_t y, size_t x, int color)
+{
+	size_t	i;
+	size_t	j;
+	size_t	cell;
+
+	cell = 30;
+	j = 0;
+	while (j < cell - 1)
+	{
+		i = 0;
+		while (i < cell - 1)
+		{
+			pixel_put(x * cell + i, y * cell + j, color, game);
+			i++;
+		}
+		j++;
+	}
+}
+static void	draw_back(t_cub *game, size_t y, size_t x, int color)
 {
 	size_t	i;
 	size_t	j;
@@ -43,7 +62,7 @@ static void	draw_map(t_cub *game)
 		x = 0;
 		while (game->map.matrix[y][x])
 		{
-			draw_cell(game, y, x, 0x00000000);
+			draw_back(game, y, x, 0x00000000);
 			if (game->map.matrix[y][x] == '1')
 				draw_cell(game, y, x, 0x000000FF);
 			else
