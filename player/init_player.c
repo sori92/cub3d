@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-char	find_player(char **matrix, t_cub *game, size_t y, size_t x)
+static char	find_player(char **matrix, t_cub *game, size_t y, size_t x)
 {
 	while (matrix[y])
 	{
@@ -31,7 +31,7 @@ char	find_player(char **matrix, t_cub *game, size_t y, size_t x)
 	return ('\0');
 }
 
-void	asign_direction(char dir, t_cub *game)
+static void	asign_direction(char dir, t_cub *game)
 {
 	if (dir == 'N')
 	{
@@ -55,6 +55,12 @@ void	asign_direction(char dir, t_cub *game)
 	}
 }
 
+void	update_planes(t_cub *game)
+{
+	game->plyr.plane_x = -game->plyr.dir_y * 0.66;
+	game->plyr.plane_y = game->plyr.dir_x * 0.66;
+}
+
 void	init_player(t_cub *game)
 {
 	char	dir;
@@ -63,4 +69,5 @@ void	init_player(t_cub *game)
 	game->plyr.pos_x = game->plyr.x + 0.5;
 	game->plyr.pos_y = game->plyr.y + 0.5;
 	asign_direction(dir, game);
+	update_planes(game);
 }

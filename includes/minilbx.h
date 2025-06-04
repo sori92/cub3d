@@ -12,6 +12,8 @@
 
 #ifndef MINILBX_H
 # define MINILBX_H
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 
 typedef struct s_mlx
 {

@@ -36,6 +36,7 @@ int	handle_keys(t_cub *game)
 			rotation(game, 1);
 		else if (game->keys.r)
 			rotation(game, -1);
+		update_planes(game);
 		game->input_cnt = 0;
 	}
 	return (0);

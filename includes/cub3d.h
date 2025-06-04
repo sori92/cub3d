@@ -13,8 +13,6 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 # include "../libft/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
@@ -25,10 +23,10 @@
 # include "player.h"
 # include "minilbx.h"
 
-# define SPEED 0.03
-# define PL_RAD 0.5
-# define WIDTH  1024
-# define HEIGHT 768
+# define SPEED 0.04
+# define PL_RAD 0.3
+# define WIDTH  1710
+# define HEIGHT 1069
 # define PI 3.14159265358979323846
 # define INPUT_DELAY 0.1
 
@@ -83,9 +81,11 @@ void	init_player(t_cub *game);
 int		move_fward(t_cub *game, int dir);
 int		move_side(t_cub *game, int dir);
 int		rotation(t_cub *game, int dir);
+void	update_planes(t_cub *game);
 //
 
 // DISPLAY
+void	render(t_cub *game);
 void	draw_win(t_cub *game);
 void	pixel_put(size_t x, size_t y, int color, t_cub *game);
 //

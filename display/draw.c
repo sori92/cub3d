@@ -31,6 +31,7 @@ static void	draw_cell(t_cub *game, size_t y, size_t x, int color)
 		j++;
 	}
 }
+
 static void	draw_back(t_cub *game, size_t y, size_t x, int color)
 {
 	size_t	i;
@@ -118,6 +119,7 @@ static void	draw_plyr(t_cub *game)
 
 void	draw_win(t_cub *game)
 {
+	render(game);
 	draw_map(game);
 	draw_plyr(game);
 	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img, 0, 0);

@@ -59,7 +59,7 @@ int	rotation(t_cub *game, int dir)
 	double	x;
 	double	y;
 
-	rads = (2.0 * dir) * (PI / 180.0);
+	rads = (3.0 * dir) * (PI / 180.0);
 	y = game->plyr.dir_y * cos(rads) - game->plyr.dir_x * sin(rads);
 	x = game->plyr.dir_y * sin(rads) + game->plyr.dir_x * cos(rads);
 	game->plyr.dir_y = y;
