@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 23:25:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/03 19:43:29 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/05 22:43:20 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	draw_cell(t_cub *game, size_t y, size_t x, int color)
 	size_t	j;
 	size_t	cell;
 
-	cell = 30;
+	cell = 10;
 	j = 0;
 	while (j < cell - 1)
 	{
@@ -38,7 +38,7 @@ static void	draw_back(t_cub *game, size_t y, size_t x, int color)
 	size_t	j;
 	size_t	cell;
 
-	cell = 30;
+	cell = 10;
 	j = 0;
 	while (j < cell)
 	{
@@ -82,8 +82,8 @@ static void	draw_plyr_dir(t_cub *game, size_t cell)
 	while (i < 31)
 	{
 		pixel_put(
-			game->plyr.pos_x * 30 + game->plyr.dir_x * cell * (1 + i / 10.0),
-			game->plyr.pos_y * 30 + game->plyr.dir_y * cell * (1 + i / 10.0),
+			game->plyr.pos_x * 10 + game->plyr.dir_x * cell * (1 + i / 10.0),
+			game->plyr.pos_y * 10 + game->plyr.dir_y * cell * (1 + i / 10.0),
 			0x000D9000, game);
 		i++;
 	}
@@ -95,20 +95,20 @@ static void	draw_plyr(t_cub *game)
 	size_t	j;
 	size_t	cell;
 
-	cell = 10;
+	cell = 6;
 	j = 0;
 	while (j < cell / 2)
 	{
 		i = 0;
 		while (i < cell / 2)
 		{
-			pixel_put(game->plyr.pos_x * 30 + i, game->plyr.pos_y * 30 + j,
+			pixel_put(game->plyr.pos_x * 10 + i, game->plyr.pos_y * 10 + j,
 				0x000D9000, game);
-			pixel_put(game->plyr.pos_x * 30 - i, game->plyr.pos_y * 30 + j,
+			pixel_put(game->plyr.pos_x * 10 - i, game->plyr.pos_y * 10 + j,
 				0x000D9000, game);
-			pixel_put(game->plyr.pos_x * 30 + i, game->plyr.pos_y * 30 - j,
+			pixel_put(game->plyr.pos_x * 10 + i, game->plyr.pos_y * 10 - j,
 				0x000D9000, game);
-			pixel_put(game->plyr.pos_x * 30 - i, game->plyr.pos_y * 30 - j,
+			pixel_put(game->plyr.pos_x * 10 - i, game->plyr.pos_y * 10 - j,
 				0x000D9000, game);
 			i++;
 		}

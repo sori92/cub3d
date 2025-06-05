@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/02 22:46:38 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/05 22:54:32 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "player.h"
 # include "minilbx.h"
 
-# define SPEED 0.04
+# define SPEED 0.02
 # define PL_RAD 0.3
 # define WIDTH  1710
 # define HEIGHT 1069
@@ -40,8 +40,28 @@ typedef struct s_keys
 	int	l;
 }	t_keys;
 
+typedef struct s_tx
+{
+    void    *img;
+    char    *addr;
+    int     width;
+    int     height;
+    int     bpp;
+    int     line_length;
+    int     endian;
+}   t_tx;
+
+typedef struct s_imges
+{
+    t_tx north;
+    t_tx south;
+    t_tx east;
+    t_tx west;
+}	t_imges;
+
 typedef struct s_cub
 {
+	t_imges	tex;
 	t_keys	keys;
 	t_plyr	plyr;
 	t_mlx	mlx;
