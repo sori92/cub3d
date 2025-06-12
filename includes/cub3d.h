@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/05 22:54:32 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/12 18:59:36 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # include "player.h"
 # include "minilbx.h"
 
-# define SPEED 0.02
+# define SPEED 0.05
 # define PL_RAD 0.3
-# define WIDTH  1710
-# define HEIGHT 1069
+# define WIDTH  1920
+# define HEIGHT 1080
 # define PI 3.14159265358979323846
 # define INPUT_DELAY 0.1
 
@@ -59,8 +59,20 @@ typedef struct s_imges
     t_tx west;
 }	t_imges;
 
+typedef struct s_rend
+{
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	delta_x;
+	double	delta_y;
+	
+}	t_rend;
+
+
 typedef struct s_cub
 {
+	t_rend	rend;
 	t_imges	tex;
 	t_keys	keys;
 	t_plyr	plyr;

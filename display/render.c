@@ -49,7 +49,7 @@ void	render_3d(t_cub *game)
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-	double	wall_x;
+	double	coll_point;
 	int		tex_x;
 	int		tex_y;
 	double	step;
@@ -58,13 +58,20 @@ void	render_3d(t_cub *game)
 	int		color;
 
 	x = 0;
+	//para cada pixel de la pantalla
 	while (x < WIDTH)
 	{
+		//normalizamos la posición del pixel para ver si es lado izq o der (o centro justo) de la pantalla.
 		camera_x = 2.0 * x / (double)WIDTH - 1.0;
+		//calculamos la dirección entre esa X (normalizada) y la posición del jugador.
 		ray_dir_x = game->plyr.dir_x + game->plyr.plane_x * camera_x;
 		ray_dir_y = game->plyr.dir_y + game->plyr.plane_y * camera_x;
+		//posicion del jugador en enteros (que lo usamos para comparar con el grid)
 		map_x = (int)game->plyr.pos_x;
 		map_y = (int)game->plyr.pos_y;
+
+		//calc_distances();
+		//Calculamos, según el vector del rayo, cuanto tiene que recorrer ese rayo para recorrer un grid entero (primero en x y luego en y).
 		if (ray_dir_x != 0)
 			delta_dist_x = fabs(1 / ray_dir_x);
 		else
@@ -75,6 +82,7 @@ void	render_3d(t_cub *game)
 		else
 			delta_dist_y = 1e30;
 
+		//Sabiendo cuanto tarda el rayo en recorrer cada grid, calculamos cuanto necesita para llegar al borde más cercano desde la posición del jugador
 		if (ray_dir_x < 0)
 		{
 			step_x = -1;
@@ -97,12 +105,17 @@ void	render_3d(t_cub *game)
 			side_dist_y = (map_y + 1.0 - game->plyr.pos_y) * delta_dist_y;
 		}
 
+		//DDA 
 		hit = 0;
+		//Hasta que choque
 		while (hit == 0)
 		{
+			//Si el borde más cercano está por el eje x o por el eje y.
 			if (side_dist_x < side_dist_y)
 			{
+				//Actualizamos side_dist para que en la siguiente iteración busque un grid más alejado. 
 				side_dist_x += delta_dist_x;
+				//Actualizamos map_x para que guarde la celda de impacto (o la que acabamos de mirar, impacte o no).
 				map_x += step_x;
 				side = 0;
 			}
@@ -115,23 +128,27 @@ void	render_3d(t_cub *game)
 			if (game->map.matrix[map_y][map_x] == '1')
 				hit = 1;
 		}
-
+		//Segun si nos hemos movido en x o en y.
 		if (side == 0)
 			perp_wall_dist = (map_x - game->plyr.pos_x + (1.0 - step_x) / 2.0) / ray_dir_x;
 		else
 			perp_wall_dist = (map_y - game->plyr.pos_y + (1.0 - step_y) / 2.0) / ray_dir_y;
 
+		//Altura de la textura (z) para esa posición (x, y).
 		line_height = (int)(HEIGHT / perp_wall_dist);
 
+		//Calculamos el inicio de la textura (con el pivote en el centro, la mitad de la textura para arriba).
 		draw_start = -line_height / 2 + HEIGHT / 2;
+		//Si se salee de la pantalla por arriba, pues 0.
 		if (draw_start < 0)
 			draw_start = 0;
-
+		//Calculamos el final de la textura (con el pivote en el centro, la mitad de la textura para abajo).
 		draw_end = line_height / 2 + HEIGHT / 2;
+		//Si se sale de la pantalla por abajo, pues la altura de la pantalla.
 		if (draw_end >= HEIGHT)
 			draw_end = HEIGHT - 1;
 
-		// Selecciona textura
+		// Selecciona textura según su orientación.
 		if (side == 0)
 		{
 			if (step_x > 0)
@@ -147,27 +164,27 @@ void	render_3d(t_cub *game)
 				tex = &game->tex.north;
 		}
 
-		// Punto exacto de impacto en la pared
+		// Punto exacto de impacto en la pared.
 		if (side == 0)
-			wall_x = game->plyr.pos_y + perp_wall_dist * ray_dir_y;
+			coll_point = game->plyr.pos_y + perp_wall_dist * ray_dir_y;
 		else
-			wall_x = game->plyr.pos_x + perp_wall_dist * ray_dir_x;
+			coll_point = game->plyr.pos_x + perp_wall_dist * ray_dir_x;
 
-		wall_x -= floor(wall_x);
-
-		tex_x = (int)(wall_x * tex->width);
+		//Esto quita la parte entera y deja solo los decimales (para tener el porcentaje de la textura).
+		coll_point -= floor(coll_point);
+		//Ese porcentaje es la posición en la textura que queremos renderizar.
+		tex_x = (int)(coll_point * tex->width);
 		if (tex_x < 0)
 			tex_x = 0;
 		if (tex_x >= tex->width)
 			tex_x = tex->width - 1;
 
-		if ((side == 0 && ray_dir_x > 0) || (side == 1 && ray_dir_y < 0))
-			tex_x = tex->width - tex_x - 1;
-
-		// Cálculo incremento en textura
+		//Cálculo incremento en textura. Cada cuantos pixeles de la pantalla avanzamos uno en la textura.
 		step = (double)tex->height / line_height;
+		//Donde empezamos la textura (porque si estamos cerca la parte de abajo)
 		tex_pos = (draw_start - HEIGHT / 2 + line_height / 2) * step;
 
+		//Bucle de pintado.
 		int y = draw_start;
 		while (y < draw_end)
 		{

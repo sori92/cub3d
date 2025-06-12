@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 22:45:03 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/05 22:54:54 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:20:17 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	rotation(t_cub *game, int dir)
 	double	x;
 	double	y;
 
-	rads = (1.0 * dir) * (PI / 180.0);
+	rads = (2.0 * dir) * (PI / 180.0);
 	y = game->plyr.dir_y * cos(rads) - game->plyr.dir_x * sin(rads);
 	x = game->plyr.dir_y * sin(rads) + game->plyr.dir_x * cos(rads);
 	game->plyr.dir_y = y;
