@@ -23,7 +23,10 @@ SRC = main.c\
 	display/handle.c\
 	display/movements.c\
 	display/draw.c\
+	display/draw_map.c\
 	display/render.c\
+	display/dda.c\
+	display/calc_texture.c\
 	player/init_player.c\
 
 CC = cc

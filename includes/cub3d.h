@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/12 18:59:36 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 19:39:07 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,17 @@ typedef struct s_imges
     t_tx west;
 }	t_imges;
 
+typedef struct s_draw
+{
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		tex_x;
+	int		tex_y;
+	double	step;
+	double	tex_pos;
+}	t_draw;
+
 typedef struct s_rend
 {
 	double	camera_x;
@@ -66,9 +77,14 @@ typedef struct s_rend
 	double	ray_dir_y;
 	double	delta_x;
 	double	delta_y;
-	
+	double	side_dist_x;
+	double	side_dist_y;
+	int		step_x;	
+	int		step_y;
+	int		side;
+	double	perp_dist;
+	t_draw	draw;
 }	t_rend;
-
 
 typedef struct s_cub
 {
@@ -118,6 +134,14 @@ void	update_planes(t_cub *game);
 
 // DISPLAY
 void	render(t_cub *game);
+void	dda(t_cub *game, t_rend *rend, int map_x, int map_y);
+void	calc_texture_size(t_rend *rend);
+t_tx	*texture_orientation(t_cub *game, t_rend *rend);
+void	calc_texture_collision_point(t_tx *tex, t_cub *game, t_rend *rend);
+void	draw_floor_and_ceilling(t_cub *game);
+void	draw_cell(t_cub *game, size_t y, size_t x, int color);
+void	draw_back(t_cub *game, size_t y, size_t x, int color);
+void	draw_map(t_cub *game);
 void	draw_win(t_cub *game);
 void	pixel_put(size_t x, size_t y, int color, t_cub *game);
 //
