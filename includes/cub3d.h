@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/17 19:39:07 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 19:57:12 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,21 @@ typedef struct s_keys
 
 typedef struct s_tx
 {
-    void    *img;
-    char    *addr;
-    int     width;
-    int     height;
-    int     bpp;
-    int     line_length;
-    int     endian;
-}   t_tx;
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}	t_tx;
 
 typedef struct s_imges
 {
-    t_tx north;
-    t_tx south;
-    t_tx east;
-    t_tx west;
+	t_tx	north;
+	t_tx	south;
+	t_tx	east;
+	t_tx	west;
 }	t_imges;
 
 typedef struct s_draw
