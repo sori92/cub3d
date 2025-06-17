@@ -42,10 +42,12 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@make -C ./libft
+	@make -C ./minilibx-linux
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME) -L./libft -lft  $(MLXFLAGS)
 
 clean:
 	@make clean -C ./libft
+	@make clean -C ./minilibx-linux
 	rm -f $(OBJS)
 
 fclean: clean

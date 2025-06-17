@@ -1,4 +1,4 @@
-WE ./textures//png/West.png
+WE ./textures/West.xpm
   		NO           ./textures/North.xpm
       SO          ./textures/South.xpm
 EA ./textures/East.xpm
