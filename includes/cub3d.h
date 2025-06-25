@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/17 19:57:12 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:51:21 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 # define HEIGHT 1080
 # define PI 3.14159265358979323846
 # define INPUT_DELAY 0.1
+
+# define CELL_SIZE 10
+# define PLYR_CELL 6
 
 typedef struct s_keys
 {
@@ -94,6 +97,7 @@ typedef struct s_cub
 	t_plyr	plyr;
 	t_mlx	mlx;
 	t_map	map;
+	int		offsets[2];
 	double	input_cnt;
 }	t_cub;
 

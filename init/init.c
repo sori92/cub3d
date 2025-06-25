@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:08:48 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 13:29:19 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/25 17:14:24 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	calc_map_offsets(t_cub *game)
+{
+	game->offsets[0] = (WIDTH - (game->map.cols * CELL_SIZE)) / 2;
+	game->offsets[1] = HEIGHT - (game->map.rows * CELL_SIZE) - 30; 
+}
 
 static void	init_map_struct(t_cub *game)
 {
@@ -24,6 +30,7 @@ static void	init_map_struct(t_cub *game)
 		exit (print_error("Wrong map file structure\n"));
 	}
 	make_map_matrix(l, game);
+	calc_map_offsets(game);
 }
 
 void	init(t_cub	*game, char *map_file)

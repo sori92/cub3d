@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 23:25:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/17 19:37:48 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/25 17:15:47 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ static void	draw_plyr_dir(t_cub *game, size_t cell)
 	while (i < 31)
 	{
 		pixel_put(
-			game->plyr.pos_x * 10 + game->plyr.dir_x * cell * (1 + i / 10.0),
-			game->plyr.pos_y * 10 + game->plyr.dir_y * cell * (1 + i / 10.0),
-			0x000D9000, game);
+			game->plyr.pos_x * 10 + game->offsets[0]
+			+ game->plyr.dir_x * cell * (1 + i / 10.0),
+			game->plyr.pos_y * 10 + game->offsets[1]
+			+ game->plyr.dir_y * cell * (1 + i / 10.0),
+			0x00BFFF, game);
 		i++;
 	}
 }
@@ -31,28 +33,26 @@ static void	draw_plyr(t_cub *game)
 {
 	size_t	i;
 	size_t	j;
-	size_t	cell;
 
-	cell = 6;
 	j = 0;
-	while (j < cell / 2)
+	while (j < PLYR_CELL / 2)
 	{
 		i = 0;
-		while (i < cell / 2)
+		while (i < PLYR_CELL / 2)
 		{
-			pixel_put(game->plyr.pos_x * 10 + i, game->plyr.pos_y * 10 + j,
-				0x000D9000, game);
-			pixel_put(game->plyr.pos_x * 10 - i, game->plyr.pos_y * 10 + j,
-				0x000D9000, game);
-			pixel_put(game->plyr.pos_x * 10 + i, game->plyr.pos_y * 10 - j,
-				0x000D9000, game);
-			pixel_put(game->plyr.pos_x * 10 - i, game->plyr.pos_y * 10 - j,
-				0x000D9000, game);
+			pixel_put(game->plyr.pos_x * 10 + i + game->offsets[0],
+				game->plyr.pos_y * 10 + j + game->offsets[1], 0x00BFFF, game);
+			pixel_put(game->plyr.pos_x * 10 - i + game->offsets[0],
+				game->plyr.pos_y * 10 + j + game->offsets[1], 0x00BFFF, game);
+			pixel_put(game->plyr.pos_x * 10 + i + game->offsets[0],
+				game->plyr.pos_y * 10 - j + game->offsets[1], 0x00BFFF, game);
+			pixel_put(game->plyr.pos_x * 10 - i + game->offsets[0],
+				game->plyr.pos_y * 10 - j + game->offsets[1], 0x00BFFF, game);
 			i++;
 		}
 		j++;
 	}
-	draw_plyr_dir(game, cell / 2 - 1);
+	draw_plyr_dir(game, PLYR_CELL / 2 - 1);
 }
 
 void	draw_win(t_cub *game)

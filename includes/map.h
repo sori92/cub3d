@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:31:50 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 14:50:21 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:20:50 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct s_map
 {
 	t_paths	paths;
 	t_clr	color;
+	size_t	rows;
+	size_t	cols;
 	char	**matrix;
 	char	**file_array;
 }	t_map;

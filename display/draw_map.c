@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:38:00 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/17 19:39:37 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/25 17:13:17 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,58 +16,55 @@ void	draw_cell(t_cub *game, size_t y, size_t x, int color)
 {
 	size_t	i;
 	size_t	j;
-	size_t	cell;
 
-	cell = 10;
 	j = 0;
-	while (j < cell - 1)
+	while (j < CELL_SIZE - 1)
 	{
 		i = 0;
-		while (i < cell - 1)
+		while (i < CELL_SIZE - 1)
 		{
-			pixel_put(x * cell + i, y * cell + j, color, game);
+			pixel_put(x * CELL_SIZE + i + game->offsets[0],
+				y * CELL_SIZE + j + game->offsets[1], color, game);
 			i++;
 		}
 		j++;
 	}
 }
 
-void	draw_back(t_cub *game, size_t y, size_t x, int color)
+void	draw_background(t_cub *game, int color)
 {
-	size_t	i;
-	size_t	j;
-	size_t	cell;
+ 	size_t	y;
+	size_t	x;
 
-	cell = 10;
-	j = 0;
-	while (j < cell)
+	y = 0;
+	while (y < game->map.rows + 2)
 	{
-		i = 0;
-		while (i < cell)
+		x = 0;
+		while (x < game->map.cols + 2)
 		{
-			pixel_put(x * cell + i, y * cell + j, color, game);
-			i++;
+			draw_cell(game, y - 1, x - 1, color);
+			x++;
 		}
-		j++;
+		y++;
 	}
 }
 
 void	draw_map(t_cub *game)
 {
-	size_t	y;
+ 	size_t	y;
 	size_t	x;
 
-	y = 0;
+	draw_background(game, 0x1E1E1E);
+ 	y = 0;
 	while (game->map.matrix[y])
 	{
 		x = 0;
 		while (game->map.matrix[y][x])
 		{
-			draw_back(game, y, x, 0x00000000);
 			if (game->map.matrix[y][x] == '1')
-				draw_cell(game, y, x, 0x000000FF);
+				draw_cell(game, y, x, 0x555555);
 			else
-				draw_cell(game, y, x, 0x00CDDFE2);
+				draw_cell(game, y, x, 0xAAAAAA);
 			x++;
 		}
 		y++;

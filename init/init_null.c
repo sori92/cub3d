@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_null.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:05:12 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/02 21:26:45 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:28:18 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static void	init_map_null(t_cub *game)
 	game->map.color.ceiling.g = 0;
 	game->map.color.ceiling.b = 0;
 	game->map.matrix = NULL;
+	game->map.cols = 0;
+	game->map.rows = 0;
 }
 
 void	init_null(t_cub *game)
@@ -54,4 +56,6 @@ void	init_null(t_cub *game)
 	game->keys.l = 0;
 	game->keys.r = 0;
 	game->input_cnt = 0;
+	game->offsets[0] = 0;
+	game->offsets[1] = 0;
 }
