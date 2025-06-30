@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:38:00 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/25 17:13:17 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/06/30 14:58:19 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	draw_cell(t_cub *game, size_t y, size_t x, int color)
 
 void	draw_background(t_cub *game, int color)
 {
- 	size_t	y;
+	size_t	y;
 	size_t	x;
 
 	y = 0;
@@ -51,11 +51,11 @@ void	draw_background(t_cub *game, int color)
 
 void	draw_map(t_cub *game)
 {
- 	size_t	y;
+	size_t	y;
 	size_t	x;
 
 	draw_background(game, 0x1E1E1E);
- 	y = 0;
+	y = 0;
 	while (game->map.matrix[y])
 	{
 		x = 0;

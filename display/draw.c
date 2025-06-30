@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 23:25:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/30 13:40:27 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/06/30 14:57:30 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ void	draw_win(t_cub *game)
 	draw_map(game);
 	draw_plyr(game);
 	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img, 0, 0);
-	draw_weapon(game); 
+	draw_weapon(game);
 }

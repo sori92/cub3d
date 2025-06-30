@@ -6,23 +6,23 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:40:39 by dsoriano          #+#    #+#             */
-/*   Updated: 2025/06/30 14:03:23 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/06/30 15:00:17 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-
 /*
 	Advances the counter of the anim until reaching 'fr_delay',
 	then it changes the current frame. So it controls the anim speed.
 */
-void    frame_iteration(t_cub *game)
+void	frame_iteration(t_cub *game)
 {
 	game->weapon.counter++;
 	if (game->weapon.counter >= game->weapon.fr_delay)
 	{
-		game->weapon.fr_current = (game->weapon.fr_current + 1) % game->weapon.fr_count;
+		game->weapon.fr_current = (game->weapon.fr_current + 1)
+			% game->weapon.fr_count;
 		game->weapon.counter = 0;
 	}
 }
@@ -33,7 +33,7 @@ void    frame_iteration(t_cub *game)
 	in an unused color, and not trigger 'pixel_put' for the pixels of that color.
 	Before painting, we calc the correct positioning of the images in the screen.
 */
-void    weapon_painting(t_cub *game, int bpp, int sl, char *data)
+void	weapon_painting(t_cub *game, int bpp, int sl, char *data)
 {
 	int	draw_x;
 	int	draw_y;
@@ -69,6 +69,6 @@ void	draw_weapon(t_cub *game)
 	frame = game->weapon.frames[game->weapon.fr_current];
 	data = mlx_get_data_addr(frame, &bpp, &sl, &(int){0});
 	if (!data)
-		return;
+		return ;
 	weapon_painting(game, bpp, sl, data);
 }

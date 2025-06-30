@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:13:16 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/30 13:30:32 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/06/30 14:59:06 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,13 @@ void	init_tex(t_cub *game)
 		= mlx_get_data_addr(game->tex.east.img, &game->tex.east.bpp,
 			&game->tex.east.line_length, &game->tex.east.endian);
 }
+
 void	weapon_textures_load(t_cub *game)
 {
 	int		i;
 	char	*nb;
 	char	*path;
-	char 	*final_path;
+	char	*final_path;
 
 	i = 0;
 	while (i < game->weapon.fr_count)
@@ -63,7 +64,8 @@ void	weapon_textures_load(t_cub *game)
 		free(nb);
 		final_path = ft_strjoin(path, ".xpm");
 		free(path);
-		game->weapon.frames[i] = mlx_xpm_file_to_image(game->mlx.ptr, final_path, &game->weapon.size_w, &game->weapon.size_h);
+		game->weapon.frames[i] = mlx_xpm_file_to_image(game->mlx.ptr,
+				final_path, &game->weapon.size_w, &game->weapon.size_h);
 		if (!game->weapon.frames[i])
 		{
 			free_all(game);
