@@ -3,43 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:07:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/17 19:33:41 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/30 15:41:49 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	draw_floor_and_ceilling(t_cub *game)
-{
-	size_t	x;
-	size_t	y;
-	size_t	f_color;
-	size_t	c_color;
-
-	f_color = (game->map.color.floor.r << 16)
-		| (game->map.color.floor.g << 8)
-		| game->map.color.floor.b;
-	c_color = (game->map.color.ceiling.r << 16)
-		| (game->map.color.ceiling.g << 8)
-		| game->map.color.ceiling.b;
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			if (y < HEIGHT / 2)
-				pixel_put(x, y, c_color, game);
-			else
-				pixel_put(x, y, f_color, game);
-			x++;
-		}
-		y++;
-	}
-}
 
 /*
 	Calculamos, según el vector del rayo, cuanto tiene que recorrer,
@@ -86,6 +57,21 @@ static void	calc_side_distances(t_cub *game, t_rend *rend, int map_x, int map_y)
 	}
 }
 
+/*
+	Changing the color according to the darkness modif.
+*/
+int	color_darkness(int color, double darkness)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = ((color >> 16) & 0xFF) * darkness;
+	g = ((color >> 8) & 0xFF) * darkness;
+	b = (color & 0xFF) * darkness;
+	return ((r << 16) | (g << 8) | b);
+}
+
 static void	draw_loop(int x, t_tx *tex, t_cub *game, t_rend *rend)
 {
 	int	color;
@@ -104,20 +90,21 @@ static void	draw_loop(int x, t_tx *tex, t_cub *game, t_rend *rend)
 				* tex->line_length + rend->draw.tex_x * (tex->bpp / 8));
 		if (rend->side == 1)
 			color = (color >> 1) & 0x7F7F7F;
+		color = color_darkness(color, rend->draw.darkness);
 		pixel_put(x, y, color, game);
 		y++;
 	}
 }
 
 /*
-	Para cada pixel de la pantalla:
-	- Normalizamos la posición del pixel para ver si es
-		lado izq, der o centro de pantalla.
-	- Calculamos la dirección entre esa X (normalizada) y la pos del jugador.
-	- Posicion del jugador en ints (que lo usamos para comparar con el grid).
-	- Cálculo incremento en textura:
-		Cada cuantos pixeles de la pantalla avanzamos uno en la textura.
-	- Donde empezamos la textura (por si estamos cerca la parte de abajo).
+	For every pixel on screen:
+	- Normalizing pixel position to determine if it's on the
+		left side, right side or centre of the screen.
+	- Calculating direction between that X (normalized) and the player pos.
+	- Player pos in ints (used to compare with the grid).
+	- Calc texture increment:
+		Every few pixels on the screen we advance one in the texture.
+	- Where the texture starts (case it's close to the lower of the screen).
 */
 void	render(t_cub *game)
 {

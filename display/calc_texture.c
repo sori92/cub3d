@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   calc_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:33:10 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/17 19:33:45 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/06/30 15:39:04 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 /*
-	Altura de la textura (z) para esa posición (x, y).
-	Calculamos el inicio de la textura
-		(con el pivote en el centro, la mitad de la textura para arriba).
-	Si se salee de la pantalla por arriba, pues 0.
-	Calculamos el final de la textura
-		(con el pivote en el centro, la mitad de la textura para abajo).
-	Si se sale de la pantalla por abajo, pues la altura de la pantalla.
+	Texture height (z) for that position (x, y).
+	We calculate the start of the texture
+		(with the pivot in the center, halfway up the texture).
+	If it goes off the screen at the top, then 0.
+	We calculate the end of the texture
+		(with the pivot in the center, halfway down the texture).
+	If it goes off the screen at the bottom, then the height of the screen.
 */
 void	calc_texture_size(t_rend *rend)
 {
@@ -30,6 +30,11 @@ void	calc_texture_size(t_rend *rend)
 	rend->draw.draw_end = rend->draw.line_height / 2 + HEIGHT / 2;
 	if (rend->draw.draw_end >= HEIGHT)
 		rend->draw.draw_end = HEIGHT - 1;
+	rend->draw.darkness = 1 - rend->perp_dist / DARK_TRESHOLD;
+	if (rend->draw.darkness < 0)
+		rend->draw.darkness = 0;
+	if (rend->draw.darkness > 1)
+		rend->draw.darkness = 1;
 }
 
 t_tx	*texture_orientation(t_cub *game, t_rend *rend)
@@ -65,6 +70,14 @@ void	calc_texture_collision_point(t_tx *tex, t_cub *game, t_rend *rend)
 	else
 		coll_point = game->plyr.pos_x + rend->perp_dist * rend->ray_dir_x;
 	coll_point -= floor(coll_point);
+	calc_texture_darkness(coll_point, tex, rend);
+}
+
+/*
+	Calculating the darkness multiplier for the texture.
+*/
+void	calc_texture_darkness(double coll_point, t_tx *tex, t_rend *rend)
+{
 	rend->draw.tex_x = (int)(coll_point * tex->width);
 	if (rend->draw.tex_x < 0)
 		rend->draw.tex_x = 0;

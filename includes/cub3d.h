@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/30 13:41:35 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/06/30 15:35:09 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define HEIGHT 1080
 # define PI 3.14159265358979323846
 # define INPUT_DELAY 0.1
+# define DARK_TRESHOLD 5
 
 # define CELL_SIZE 10
 # define PLYR_CELL 6
@@ -82,6 +83,7 @@ typedef struct s_draw
 	int		tex_y;
 	double	step;
 	double	tex_pos;
+	double	darkness;
 }	t_draw;
 
 typedef struct s_rend
