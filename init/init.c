@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:08:48 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/25 17:14:24 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/06/26 17:07:32 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	init_map_struct(t_cub *game)
 	make_map_matrix(l, game);
 	calc_map_offsets(game);
 }
+
 
 void	init(t_cub	*game, char *map_file)
 {

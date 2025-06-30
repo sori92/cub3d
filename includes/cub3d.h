@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/25 13:51:21 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/06/26 14:23:22 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,17 @@ typedef struct s_imges
 	t_tx	west;
 }	t_imges;
 
+typedef struct s_anims
+{
+	void	**frames;
+	int		fr_count;
+	int		fr_current;
+	int		fr_delay;
+	int		counter;
+	int		size_w;
+	int		size_h;
+}	t_anims;
+
 typedef struct s_draw
 {
 	int		line_height;
@@ -97,6 +108,7 @@ typedef struct s_cub
 	t_plyr	plyr;
 	t_mlx	mlx;
 	t_map	map;
+	t_anims	weapon;
 	int		offsets[2];
 	double	input_cnt;
 }	t_cub;

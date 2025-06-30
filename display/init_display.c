@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:13:16 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/25 15:33:17 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/06/30 13:25:11 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,40 @@ void	init_tex(t_cub *game)
 			&game->tex.east.line_length, &game->tex.east.endian);
 }
 
+void	init_weapon(t_cub *game)
+{
+	int		i;
+	char	*path;
+	char 	*final_path;
+	char	*nb;
+
+	game->weapon.fr_count = 4;
+	game->weapon.frames = malloc(sizeof(void *) * game->weapon.fr_count);
+	game->weapon.fr_current = 0;
+	game->weapon.fr_delay = 5;
+	game->weapon.counter = 0;
+	game->weapon.size_w = 0;
+	game->weapon.size_h = 0;
+
+	i = 0;
+	while (i < game->weapon.fr_count)
+	{
+		nb = ft_itoa(i);
+		path = ft_strjoin("textures/weapon/Torch_0", nb);
+		free(nb);
+		final_path = ft_strjoin(path, ".xpm");
+		free(path);
+		game->weapon.frames[i] = mlx_xpm_file_to_image(game->mlx.ptr, final_path, &game->weapon.size_w, &game->weapon.size_h);
+		if (!game->weapon.frames[i])
+		{
+			free_all(game);
+			exit (print_error("loading the weapon frames\n"));
+		}
+		free(final_path);
+		i++;
+	}
+}
+
 void	init_display(t_cub *game)
 {
 	game->mlx.ptr = mlx_init();
@@ -56,6 +90,7 @@ void	init_display(t_cub *game)
 	game->mlx.img = mlx_new_image(game->mlx.ptr, WIDTH, HEIGHT);
 	game->mlx.addr = mlx_get_data_addr(game->mlx.img, &game->mlx.bpp,
 			&game->mlx.line_length, &game->mlx.endian);
+	init_weapon(game);
 	init_tex(game);
 	draw_win(game);
 }
