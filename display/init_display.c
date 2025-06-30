@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:13:16 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/30 13:25:11 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/06/30 13:30:32 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,12 @@ void	init_tex(t_cub *game)
 		= mlx_get_data_addr(game->tex.east.img, &game->tex.east.bpp,
 			&game->tex.east.line_length, &game->tex.east.endian);
 }
-
-void	init_weapon(t_cub *game)
+void	weapon_textures_load(t_cub *game)
 {
 	int		i;
+	char	*nb;
 	char	*path;
 	char 	*final_path;
-	char	*nb;
-
-	game->weapon.fr_count = 4;
-	game->weapon.frames = malloc(sizeof(void *) * game->weapon.fr_count);
-	game->weapon.fr_current = 0;
-	game->weapon.fr_delay = 5;
-	game->weapon.counter = 0;
-	game->weapon.size_w = 0;
-	game->weapon.size_h = 0;
 
 	i = 0;
 	while (i < game->weapon.fr_count)
@@ -81,6 +72,18 @@ void	init_weapon(t_cub *game)
 		free(final_path);
 		i++;
 	}
+}
+
+void	init_weapon(t_cub *game)
+{
+	game->weapon.fr_count = 4;
+	game->weapon.frames = malloc(sizeof(void *) * game->weapon.fr_count);
+	game->weapon.fr_current = 0;
+	game->weapon.fr_delay = 5;
+	game->weapon.counter = 0;
+	game->weapon.size_w = 0;
+	game->weapon.size_h = 0;
+	weapon_textures_load(game);
 }
 
 void	init_display(t_cub *game)

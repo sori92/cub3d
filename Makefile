@@ -27,6 +27,7 @@ SRC = main.c\
 	display/render.c\
 	display/dda.c\
 	display/calc_texture.c\
+	display/weapon_anims.c\
 	player/init_player.c\
 
 CC = cc

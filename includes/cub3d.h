@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/26 14:23:22 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/06/30 13:41:35 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ void	draw_back(t_cub *game, size_t y, size_t x, int color);
 void	draw_map(t_cub *game);
 void	draw_win(t_cub *game);
 void	pixel_put(size_t x, size_t y, int color, t_cub *game);
+void	draw_weapon(t_cub *game);
 //
 
 // PARSERS
