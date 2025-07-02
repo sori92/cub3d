@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:38:00 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/02 16:10:00 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/02 18:50:22 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	draw_map(t_cub *game)
 		{
 			if (game->map.matrix[y][x] == '1')
 				draw_cell(game, y, x, 0x555555);
+			else if (game->map.matrix[y][x] == ' ')
+				draw_cell(game, y, x, 0x1E1E1E);
 			else if (game->map.matrix[y][x] == '2')
 				draw_cell(game, y, x, 0x777766);
 			else if (game->map.matrix[y][x] == '3')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:10:38 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/02 17:34:58 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/02 18:43:12 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,37 @@ void	check_rgb_range(t_cub *game, t_clr colors)
 	}
 }
 
+void	check_map_size(t_cub *game, char **matrix)
+{
+	size_t	x;
+	size_t	y;
+	int		err;
+	
+	x = 0;
+	y = 0;
+	err = 0;
+	if (ft_arraylen(matrix) > 42)
+	{
+		print_error("Height of the map too hard to handle\n");
+		err = 1;
+	}
+	while (matrix[y])
+	{
+		if (ft_strlen(matrix[y]) > 42)
+		{
+			print_error("Width of the map too hard to handle\n");
+			err = 1;
+			break;
+		}
+		y++;	
+	}
+	if (err)
+	{
+		free_all(game);
+		exit(err);
+	}
+}
+
 void	parser(t_cub *game)
 {
 	check_texture_routes_and_colors(game);
@@ -67,5 +98,6 @@ void	parser(t_cub *game)
 	clean_matrix(game);
 	check_for_player(game);
 	check_closed_walls(ft_arraydup(game->map.matrix), 0, 0, game);
+	check_map_size(game, game->map.matrix);
 	init_player(game);
 }
