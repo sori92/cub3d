@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:18:43 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 13:30:08 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:04:38 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	check_char(char c, t_cub *game)
 {
-	if (c == '1' || c == '0' || c == 'N' || c == 'S'
+	if (c == '1' || c == '2' || c == '0' || c == 'N' || c == 'S'
 		|| c == 'W' || c == 'E' || c == ' ')
 		return ;
 	free_all(game);

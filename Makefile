@@ -1,5 +1,6 @@
 SRC = main.c\
 	print_error.c\
+	input_hooks.c\
 	init/init_null.c\
 	init/init.c\
 	parsers/clean_nl.c\

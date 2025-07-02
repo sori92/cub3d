@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 22:45:03 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/12 17:20:17 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/01 18:01:07 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ static int	can_move(t_cub *game, double new_x, double new_y)
 		game->map.matrix[(int)(new_y + PL_RAD)][(int)(new_x - PL_RAD)] == '1' ||
 		game->map.matrix[(int)(new_y + PL_RAD)][(int)(new_x + PL_RAD)] == '1' ||
 		game->map.matrix[(int)(new_y)][(int)(new_x)] == '1')
+		return (0);
+	if (game->map.matrix[(int)(new_y - PL_RAD)][(int)(new_x - PL_RAD)] == '2' ||
+		game->map.matrix[(int)(new_y - PL_RAD)][(int)(new_x + PL_RAD)] == '2' ||
+		game->map.matrix[(int)(new_y + PL_RAD)][(int)(new_x - PL_RAD)] == '2' ||
+		game->map.matrix[(int)(new_y + PL_RAD)][(int)(new_x + PL_RAD)] == '2' ||
+		game->map.matrix[(int)(new_y)][(int)(new_x)] == '2')
 		return (0);
 	return (1);
 }

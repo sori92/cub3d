@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:31:50 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/25 13:20:50 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:10:18 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 # define MAP_H
 # include "cub3d.h"
 
-/*
- * MIRAR MEJOR FORMA DE GUARDAR ESTO!!	
- */
-
 typedef struct s_paths
 {
 	char	*no;
 	char	*so;
 	char	*we;
 	char	*ea;
+	char	*door;
 }	t_paths;
 
 typedef struct s_rgb
@@ -40,6 +37,7 @@ typedef struct s_clr
 	char	*c;
 	t_rgb	ceiling;
 }	t_clr;
+
 typedef struct s_map
 {
 	t_paths	paths;

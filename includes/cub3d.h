@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/30 15:35:09 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:52:57 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define INPUT_DELAY 0.1
 # define DARK_TRESHOLD 5
 
-# define CELL_SIZE 10
-# define PLYR_CELL 6
+# define CELL_SIZE 15
+# define PLYR_CELL 7.5
 
 typedef struct s_keys
 {
@@ -42,6 +42,7 @@ typedef struct s_keys
 	int	d;
 	int	r;
 	int	l;
+	int	open;
 }	t_keys;
 
 typedef struct s_tx
@@ -61,6 +62,7 @@ typedef struct s_imges
 	t_tx	south;
 	t_tx	east;
 	t_tx	west;
+	t_tx	door;
 }	t_imges;
 
 typedef struct s_anims
@@ -98,6 +100,7 @@ typedef struct s_rend
 	int		step_x;	
 	int		step_y;
 	int		side;
+	int		is_door;
 	double	perp_dist;
 	t_draw	draw;
 }	t_rend;
@@ -142,6 +145,13 @@ void	asign_paths(t_cub *game, char **line);
 void	make_map_matrix(size_t l, t_cub *game);
 //
 
+//HOOKS
+int	key_press(int key, t_cub *game);
+int	key_released(int key, t_cub *game);
+int	mouse_rot(int x, int y, t_cub *game);
+int	mouse_leave(void *event, t_cub *game);
+//
+
 // PLAYER
 void	init_player(t_cub *game);
 int		move_fward(t_cub *game, int dir);
@@ -163,6 +173,7 @@ void	draw_map(t_cub *game);
 void	draw_win(t_cub *game);
 void	pixel_put(size_t x, size_t y, int color, t_cub *game);
 void	draw_weapon(t_cub *game);
+void	calc_texture_darkness(double coll_point, t_tx *tex, t_rend *rend);
 //
 
 // PARSERS

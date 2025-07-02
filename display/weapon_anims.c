@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:40:39 by dsoriano          #+#    #+#             */
-/*   Updated: 2025/06/30 15:00:17 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/01 12:58:45 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	weapon_painting(t_cub *game, int bpp, int sl, char *data)
 	int	x;
 	int	y;
 
-	draw_x = (WIDTH - game->weapon.size_w) / 2;
+	draw_x = ((WIDTH - game->weapon.size_w) / 2) + 150;
 	draw_y = HEIGHT - game->weapon.size_h;
 	y = 0;
 	while (y < game->weapon.size_h)

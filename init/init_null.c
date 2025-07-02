@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:05:12 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/25 18:33:02 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/01 18:27:11 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	init_null(t_cub *game)
 	game->keys.s = 0;
 	game->keys.l = 0;
 	game->keys.r = 0;
+	game->keys.open = 0;
 	game->input_cnt = 0;
 	game->offsets[0] = 0;
 	game->offsets[1] = 0;

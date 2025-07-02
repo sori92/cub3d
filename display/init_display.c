@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:13:16 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/30 14:59:06 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:22:53 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ void	init_tex(t_cub *game)
 	game->tex.east.addr
 		= mlx_get_data_addr(game->tex.east.img, &game->tex.east.bpp,
 			&game->tex.east.line_length, &game->tex.east.endian);
+	game->tex.door.img
+		= mlx_xpm_file_to_image(game->mlx.ptr, game->map.paths.door,
+			&game->tex.door.width, &game->tex.door.height);	
+	game->tex.door.addr
+		= mlx_get_data_addr(game->tex.door.img, &game->tex.door.bpp,
+			&game->tex.door.line_length, &game->tex.door.endian);
 }
 
 void	weapon_textures_load(t_cub *game)

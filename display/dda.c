@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:26:51 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/17 19:35:46 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:29:17 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,12 @@ void	dda(t_cub *game, t_rend *rend, int map_x, int map_y)
 			map_y += rend->step_y;
 			rend->side = 1;
 		}
-		if (game->map.matrix[map_y][map_x] == '1')
+		if (game->map.matrix[map_y][map_x] == '1'
+				|| game->map.matrix[map_y][map_x] == '2')
+		{
 			hit = 1;
+			rend->is_door = (game->map.matrix[map_y][map_x] == '2');
+		}
 	}
 	calc_perp_dist(game, rend, map_x, map_y);
 }

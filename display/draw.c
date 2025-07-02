@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 23:25:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/30 15:41:57 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:20:57 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static void	draw_plyr_dir(t_cub *game, size_t cell)
 	while (i < 31)
 	{
 		pixel_put(
-			game->plyr.pos_x * 10 + game->offsets[0]
+			game->plyr.pos_x * CELL_SIZE + game->offsets[0]
 			+ game->plyr.dir_x * cell * (1 + i / 10.0),
-			game->plyr.pos_y * 10 + game->offsets[1]
+			game->plyr.pos_y * CELL_SIZE + game->offsets[1]
 			+ game->plyr.dir_y * cell * (1 + i / 10.0),
 			0x00BFFF, game);
 		i++;
@@ -40,14 +40,14 @@ static void	draw_plyr(t_cub *game)
 		i = 0;
 		while (i < PLYR_CELL / 2)
 		{
-			pixel_put(game->plyr.pos_x * 10 + i + game->offsets[0],
-				game->plyr.pos_y * 10 + j + game->offsets[1], 0x00BFFF, game);
-			pixel_put(game->plyr.pos_x * 10 - i + game->offsets[0],
-				game->plyr.pos_y * 10 + j + game->offsets[1], 0x00BFFF, game);
-			pixel_put(game->plyr.pos_x * 10 + i + game->offsets[0],
-				game->plyr.pos_y * 10 - j + game->offsets[1], 0x00BFFF, game);
-			pixel_put(game->plyr.pos_x * 10 - i + game->offsets[0],
-				game->plyr.pos_y * 10 - j + game->offsets[1], 0x00BFFF, game);
+			pixel_put(game->plyr.pos_x * CELL_SIZE + i + game->offsets[0],
+				game->plyr.pos_y * CELL_SIZE + j + game->offsets[1], 0x00BFFF, game);
+			pixel_put(game->plyr.pos_x * CELL_SIZE - i + game->offsets[0],
+				game->plyr.pos_y * CELL_SIZE + j + game->offsets[1], 0x00BFFF, game);
+			pixel_put(game->plyr.pos_x * CELL_SIZE + i + game->offsets[0],
+				game->plyr.pos_y * CELL_SIZE - j + game->offsets[1], 0x00BFFF, game);
+			pixel_put(game->plyr.pos_x * CELL_SIZE - i + game->offsets[0],
+				game->plyr.pos_y * CELL_SIZE - j + game->offsets[1], 0x00BFFF, game);
 			i++;
 		}
 		j++;

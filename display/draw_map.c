@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:38:00 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/30 14:58:19 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:11:30 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void	draw_background(t_cub *game, int color)
 	}
 }
 
+/*
+	1 is for walls, 2 is for closed doors and 3 is for opened doors.
+*/
 void	draw_map(t_cub *game)
 {
 	size_t	y;
@@ -63,6 +66,10 @@ void	draw_map(t_cub *game)
 		{
 			if (game->map.matrix[y][x] == '1')
 				draw_cell(game, y, x, 0x555555);
+			else if (game->map.matrix[y][x] == '2')
+				draw_cell(game, y, x, 0x777766);
+			else if (game->map.matrix[y][x] == '3')
+				draw_cell(game, y, x, 0xBBBB99);
 			else
 				draw_cell(game, y, x, 0xAAAAAA);
 			x++;

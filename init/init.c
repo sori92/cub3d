@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:08:48 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/26 17:07:32 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:41:19 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	calc_map_offsets(t_cub *game)
 {
-	game->offsets[0] = (WIDTH - (game->map.cols * CELL_SIZE)) / 2;
+	game->offsets[0] = 30; //(WIDTH - (game->map.cols * CELL_SIZE)) / 2;
 	game->offsets[1] = HEIGHT - (game->map.rows * CELL_SIZE) - 30; 
 }
 
@@ -24,7 +24,7 @@ static void	init_map_struct(t_cub *game)
 
 	l = cpy_paths_and_colors(game);
 	if (!game->map.paths.no || !game->map.paths.so || !game->map.paths.we
-		|| !game->map.paths.ea || !game->map.color.f || !game->map.color.c)
+		|| !game->map.paths.ea || !game->map.paths.door || !game->map.color.f || !game->map.color.c)
 	{
 		free_all(game);
 		exit (print_error("Wrong map file structure\n"));

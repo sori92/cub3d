@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 20:22:59 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 13:29:26 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:38:31 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	free_all(t_cub *game)
 		free(game->map.paths.we);
 	if (game->map.paths.ea)
 		free(game->map.paths.ea);
+	if (game->map.paths.door)
+		free(game->map.paths.door);
 	if (game->map.color.f)
 		free(game->map.color.f);
 	if (game->map.color.c)

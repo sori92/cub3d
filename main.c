@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:30:09 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/03 19:44:50 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:23:17 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,42 +31,6 @@ int	error_in_args(int argc, char **argv)
 	return (0);
 }
 
-int	key_press(int key, t_cub *game)
-{
-	if (key == XK_Escape)
-		return (close_window(game));
-	if (key == XK_a)
-		game->keys.a = 1;
-	if (key == XK_d)
-		game->keys.d = 1;
-	if (key == XK_w)
-		game->keys.w = 1;
-	if (key == XK_s)
-		game->keys.s = 1;
-	if (key == XK_Left)
-		game->keys.l = 1;
-	if (key == XK_Right)
-		game->keys.r = 1;
-	return (1);
-}
-
-int	key_released(int key, t_cub *game)
-{
-	if (key == XK_a)
-		game->keys.a = 0;
-	if (key == XK_d)
-		game->keys.d = 0;
-	if (key == XK_w)
-		game->keys.w = 0;
-	if (key == XK_s)
-		game->keys.s = 0;
-	if (key == XK_Left)
-		game->keys.l = 0;
-	if (key == XK_Right)
-		game->keys.r = 0;
-	return (1);
-}
-
 int	main(int argc, char **argv)
 {
 	t_cub	game;
@@ -79,6 +43,8 @@ int	main(int argc, char **argv)
 	init_display(&game);
 	mlx_hook(game.mlx.win, KeyPress, KeyPressMask, key_press, &game);
 	mlx_hook(game.mlx.win, KeyRelease, KeyReleaseMask, key_released, &game);
+	mlx_hook(game.mlx.win, MotionNotify, PointerMotionMask, mouse_rot, &game);
+	mlx_hook(game.mlx.win, LeaveNotify, LeaveWindowMask, mouse_leave, &game);
 	mlx_loop_hook(game.mlx.ptr, handle_keys, &game);
 	mlx_hook(game.mlx.win, 17, 0, close_window, &game);
 	mlx_loop(game.mlx.ptr);
