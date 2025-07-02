@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:23:46 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/02 12:56:44 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:18:39 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	loop_counter(t_cub *game)
 static int	open_door(t_cub *game)
 {
 	double	dist_door;
-	int new_x;
-	int new_y;
+	int		new_x;
+	int		new_y;
 
 	dist_door = 0.9;
 	new_x = game->plyr.pos_x + game->plyr.dir_x;

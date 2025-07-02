@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:38:00 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/01 16:11:30 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/02 16:10:00 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	draw_cell(t_cub *game, size_t y, size_t x, int color)
 	size_t	j;
 
 	j = 0;
-	while (j < CELL_SIZE - 1)
+	while (j < CELL_SIZE)
 	{
 		i = 0;
-		while (i < CELL_SIZE - 1)
+		while (i < CELL_SIZE)
 		{
 			pixel_put(x * CELL_SIZE + i + game->offsets[0],
 				y * CELL_SIZE + j + game->offsets[1], color, game);

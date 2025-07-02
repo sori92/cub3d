@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 23:25:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/02 13:30:49 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:17:57 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ static void	draw_plyr(t_cub *game)
 		while (i < PLYR_CELL / 2)
 		{
 			pixel_put(game->plyr.pos_x * CELL_SIZE + i + game->offsets[0],
-				game->plyr.pos_y * CELL_SIZE + j + game->offsets[1], 0x00BFFF, game);
+				game->plyr.pos_y * CELL_SIZE + j + game->offsets[1], PC, game);
 			pixel_put(game->plyr.pos_x * CELL_SIZE - i + game->offsets[0],
-				game->plyr.pos_y * CELL_SIZE + j + game->offsets[1], 0x00BFFF, game);
+				game->plyr.pos_y * CELL_SIZE + j + game->offsets[1], PC, game);
 			pixel_put(game->plyr.pos_x * CELL_SIZE + i + game->offsets[0],
-				game->plyr.pos_y * CELL_SIZE - j + game->offsets[1], 0x00BFFF, game);
+				game->plyr.pos_y * CELL_SIZE - j + game->offsets[1], PC, game);
 			pixel_put(game->plyr.pos_x * CELL_SIZE - i + game->offsets[0],
-				game->plyr.pos_y * CELL_SIZE - j + game->offsets[1], 0x00BFFF, game);
+				game->plyr.pos_y * CELL_SIZE - j + game->offsets[1], PC, game);
 			i++;
 		}
 		j++;

@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/01 17:52:57 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:20:43 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "player.h"
 # include "minilbx.h"
 
-# define SPEED 0.05
+# define SPEED 0.09
 # define PL_RAD 0.3
 # define WIDTH  1920
 # define HEIGHT 1080
@@ -33,6 +33,7 @@
 
 # define CELL_SIZE 15
 # define PLYR_CELL 7.5
+# define PC 0x00BFFF
 
 typedef struct s_keys
 {
@@ -146,10 +147,10 @@ void	make_map_matrix(size_t l, t_cub *game);
 //
 
 //HOOKS
-int	key_press(int key, t_cub *game);
-int	key_released(int key, t_cub *game);
-int	mouse_rot(int x, int y, t_cub *game);
-int	mouse_leave(void *event, t_cub *game);
+int		key_press(int key, t_cub *game);
+int		key_released(int key, t_cub *game);
+int		mouse_rot(int x, int y, t_cub *game);
+int		mouse_leave(void *event, t_cub *game);
 //
 
 // PLAYER

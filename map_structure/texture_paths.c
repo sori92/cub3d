@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:34:42 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/01 17:14:52 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:30:18 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*fill_path(char **line, char *cardinal, t_cub *game)
 	char	*field;
 
 	field = NULL;
+	if (ft_strcmp(line[0], cardinal) != 0)
+		return (NULL);
 	if (ft_arraylen(line) != 2)
 	{
 		free_array(line, ft_arraylen(line));
@@ -70,6 +72,8 @@ char	*fill_color(char **line, char *to_fill, t_cub *game)
 	char	*field;
 
 	field = NULL;
+	if (ft_strcmp(line[0], to_fill) != 0)
+		return (NULL);
 	if (ft_arraylen(line) < 2 || ft_arraylen(line) > 4)
 	{
 		free_array(line, ft_arraylen(line));
@@ -78,8 +82,7 @@ char	*fill_color(char **line, char *to_fill, t_cub *game)
 		ft_putendl_fd(" [F/C] [255,255,255]", 2);
 		exit(1);
 	}
-	if (ft_strcmp(line[0], to_fill) == 0)
-		field = color_aux_func(line, game);
+	field = color_aux_func(line, game);
 	return (field);
 }
 
@@ -117,7 +120,7 @@ size_t	cpy_paths_and_colors(t_cub *game)
 			free_all(game);
 			exit(print_error("Error in malloc doing split"));
 		}
-		if (line[0][0] != '\n')
+		if (line[0] && line[0][0] != '\n')
 			asign_paths(game, line);
 		free_array(line, ft_arraylen(line));
 		if (game->map.file_array[l][0] != '\n')

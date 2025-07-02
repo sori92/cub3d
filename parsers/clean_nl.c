@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:18:02 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/01 17:17:53 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:35:47 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,4 @@ char	*errase_newline(char *str)
 	clean[i] = '\0';
 	free(str);
 	return (clean);
-}
-
-void	clean_paths_and_colors(t_cub *game)
-{
-	game->map.paths.no = errase_newline(game->map.paths.no);
-	game->map.paths.so = errase_newline(game->map.paths.so);
-	game->map.paths.ea = errase_newline(game->map.paths.ea);
-	game->map.paths.we = errase_newline(game->map.paths.we);
-	game->map.paths.door = errase_newline(game->map.paths.door);
-	game->map.color.f = errase_newline(game->map.color.f);
-	game->map.color.c = errase_newline(game->map.color.c);
 }

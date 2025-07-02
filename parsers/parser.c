@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:10:38 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/05 16:23:15 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:34:58 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	check_rgb_range(t_cub *game, t_clr colors)
 
 void	parser(t_cub *game)
 {
-	clean_paths_and_colors(game);
 	check_texture_routes_and_colors(game);
 	check_rgb_range(game, game->map.color);
 	check_chars_and_empty_lines(game);

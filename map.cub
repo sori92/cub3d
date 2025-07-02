@@ -1,11 +1,12 @@
+F 70, 50,       30 
 WE ./textures/West.xpm
-  		NO           ./textures/North.xpm
-      SO          ./textures/South.xpm
+  		NO           ./textures/North.xpm    
 EA ./textures/East.xpm
+
+SO ./textures/South.xpm
 D ./textures/Door.xpm
 
 
-F 70, 50,       30
 C 50, 45, 40
 
         111111111111111111111111

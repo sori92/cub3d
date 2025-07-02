@@ -6,13 +6,23 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:13:16 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/02 13:31:55 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:36:50 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	init_tex(t_cub *game)
+static void	init_tex_aux(t_cub *game)
+{
+	game->tex.door.img
+		= mlx_xpm_file_to_image(game->mlx.ptr, game->map.paths.door,
+			&game->tex.door.width, &game->tex.door.height);
+	game->tex.door.addr
+		= mlx_get_data_addr(game->tex.door.img, &game->tex.door.bpp,
+			&game->tex.door.line_length, &game->tex.door.endian);
+}
+
+static void	init_tex(t_cub *game)
 {
 	game->tex.north.img
 		= mlx_xpm_file_to_image(game->mlx.ptr, game->map.paths.no,
@@ -38,12 +48,7 @@ void	init_tex(t_cub *game)
 	game->tex.east.addr
 		= mlx_get_data_addr(game->tex.east.img, &game->tex.east.bpp,
 			&game->tex.east.line_length, &game->tex.east.endian);
-	game->tex.door.img
-		= mlx_xpm_file_to_image(game->mlx.ptr, game->map.paths.door,
-			&game->tex.door.width, &game->tex.door.height);	
-	game->tex.door.addr
-		= mlx_get_data_addr(game->tex.door.img, &game->tex.door.bpp,
-			&game->tex.door.line_length, &game->tex.door.endian);
+	init_tex_aux(game);
 }
 
 void	weapon_textures_load(t_cub *game)
