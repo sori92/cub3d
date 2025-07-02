@@ -25,11 +25,9 @@ int	loop_counter(t_cub *game)
 */
 static int	open_door(t_cub *game)
 {
-	double	dist_door;
 	int		new_x;
 	int		new_y;
 
-	dist_door = 0.9;
 	new_x = game->plyr.pos_x + game->plyr.dir_x;
 	new_y = game->plyr.pos_y + game->plyr.dir_y;
 	if (game->map.matrix[new_y][new_x] == '2')

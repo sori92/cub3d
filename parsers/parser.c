@@ -61,11 +61,9 @@ void	check_rgb_range(t_cub *game, t_clr colors)
 
 void	check_map_size(t_cub *game, char **matrix)
 {
-	size_t	x;
 	size_t	y;
 	int		err;
 	
-	x = 0;
 	y = 0;
 	err = 0;
 	if (ft_arraylen(matrix) > 42)
