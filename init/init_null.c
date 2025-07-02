@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:05:12 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/01 18:27:11 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:55:15 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	init_map_null(t_cub *game)
 	game->map.paths.so = NULL;
 	game->map.paths.ea = NULL;
 	game->map.paths.we = NULL;
+	game->map.paths.door = NULL;
 	game->map.color.f = NULL;
 	game->map.color.floor.r = 0;
 	game->map.color.floor.g = 0;

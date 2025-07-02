@@ -34,7 +34,7 @@ SRC = main.c\
 CC = cc
 OBJS = $(SRC:.c=.o)
 NAME = cub3D
-FLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
 MLXFLAGS = -L./minilibx-linux -lmlx -lXext -lX11 -lm
 
 all: $(NAME)
