@@ -6,20 +6,11 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:13:16 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/01 17:22:53 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/02 13:31:55 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	pixel_put(size_t x, size_t y, int color, t_cub *game)
-{
-	char	*dst;
-
-	dst = game->mlx.addr
-		+ (y * game->mlx.line_length + x * (game->mlx.bpp / 8));
-	*(unsigned int *)dst = color;
-}
 
 void	init_tex(t_cub *game)
 {
@@ -66,7 +57,7 @@ void	weapon_textures_load(t_cub *game)
 	while (i < game->weapon.fr_count)
 	{
 		nb = ft_itoa(i);
-		path = ft_strjoin("textures/weapon/Torch_0", nb);
+		path = ft_strjoin("./textures/weapon/Torch_0", nb);
 		free(nb);
 		final_path = ft_strjoin(path, ".xpm");
 		free(path);

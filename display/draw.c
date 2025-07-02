@@ -6,11 +6,20 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 23:25:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/01 15:20:57 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/02 13:30:49 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	pixel_put(size_t x, size_t y, int color, t_cub *game)
+{
+	char	*dst;
+
+	dst = game->mlx.addr
+		+ (y * game->mlx.line_length + x * (game->mlx.bpp / 8));
+	*(unsigned int *)dst = color;
+}
 
 static void	draw_plyr_dir(t_cub *game, size_t cell)
 {
@@ -90,6 +99,6 @@ void	draw_win(t_cub *game)
 	render(game);
 	draw_map(game);
 	draw_plyr(game);
-	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img, 0, 0);
 	draw_weapon(game);
+	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img, 0, 0);
 }
