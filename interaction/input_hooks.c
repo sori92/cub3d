@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_hooks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:47:09 by dsoriano          #+#    #+#             */
-/*   Updated: 2025/07/03 13:04:19 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 18:50:51 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ int	mouse_rot(int x, int y, t_cub *game)
 	int			min_r;
 
 	(void)y;
+	if (!prev_x)
+		prev_x = x;
 	min_l = WIDTH * 0.3;
 	min_r = WIDTH * 0.7;
-	if (prev_x == 0)
-		prev_x = x;
 	delta_x = x - prev_x;
 	if (x >= min_l && x <= min_r)
 	{
@@ -89,10 +89,3 @@ int	mouse_rot(int x, int y, t_cub *game)
 	return (1);
 }
 
-int	mouse_leave(void *event, t_cub *game)
-{
-	(void)event;
-	key_released(XK_Left, game);
-	key_released(XK_Right, game);
-	return (0);
-}

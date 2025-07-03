@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:30:09 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/01 15:23:17 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 18:36:38 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	main(int argc, char **argv)
 	mlx_hook(game.mlx.win, KeyPress, KeyPressMask, key_press, &game);
 	mlx_hook(game.mlx.win, KeyRelease, KeyReleaseMask, key_released, &game);
 	mlx_hook(game.mlx.win, MotionNotify, PointerMotionMask, mouse_rot, &game);
-	mlx_hook(game.mlx.win, LeaveNotify, LeaveWindowMask, mouse_leave, &game);
 	mlx_loop_hook(game.mlx.ptr, handle_keys, &game);
 	mlx_hook(game.mlx.win, 17, 0, close_window, &game);
 	mlx_loop(game.mlx.ptr);

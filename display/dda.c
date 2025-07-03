@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:26:51 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/03 16:13:54 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 17:41:11 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	hit_detection(char elem, t_rend *rend)
 	int	hit;
 
 	hit = 0;
-	if (elem == '1' || elem == '2' || (elem == '3' && rend->first_loop))
+	if (elem == '1' || elem == '2' || (elem == '3' && !rend->first_loop))
 		hit = 1;
 	rend->is_door = (elem == '2') || (elem == '3');
 	if (elem == '3')

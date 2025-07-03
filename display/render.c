@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:07:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/03 16:10:33 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 18:22:02 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	color_darkness(int color, double darkness)
 	int	g;
 	int	b;
 
+	
 	r = ((color >> 16) & 0xFF) * darkness;
 	g = ((color >> 8) & 0xFF) * darkness;
 	b = (color & 0xFF) * darkness;
@@ -88,9 +89,12 @@ static void	draw_loop(int x, t_tx *tex, t_cub *game, t_rend *rend)
 		rend->draw.tex_pos += rend->draw.step;
 		color = *(unsigned int *)(tex->addr + rend->draw.tex_y
 				* tex->line_length + rend->draw.tex_x * (tex->bpp / 8));
-		if (rend->side == 1)
-			color = (color >> 1) & 0x7F7F7F;
-		color = color_darkness(color, rend->draw.darkness);
+		if ((color & 0x00FFFFFF) != 0x00FF00FF)
+		{
+			if (rend->side == 1)
+				color = (color >> 1) & 0x7F7F7F;
+			color = color_darkness(color, rend->draw.darkness);
+		}
 		pixel_put(x, y, color, game);
 		y++;
 	}
