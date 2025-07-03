@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:31:50 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/01 17:10:18 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 13:12:02 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_paths
 	char	*we;
 	char	*ea;
 	char	*door;
+	char	*opened;
 }	t_paths;
 
 typedef struct s_rgb

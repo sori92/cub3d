@@ -6,13 +6,13 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:26:51 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/01 17:29:17 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:09:41 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void	calc_perp_dist(t_cub *game, t_rend *rend, int map_x, int map_y)
+void	calc_perp_dist(t_cub *game, t_rend *rend, int map_x, int map_y)
 {
 	if (rend->side == 0)
 		rend->perp_dist = (map_x - game->plyr.pos_x
@@ -23,12 +23,48 @@ static void	calc_perp_dist(t_cub *game, t_rend *rend, int map_x, int map_y)
 }
 
 /*
-	Hasta que choque, hacemos:
-	- Si el borde más cercano está por el eje x o por el eje y.
-	- Actualizamos side_dist para que
-		en la siguiente iteración busque un grid más alejado.
-	- Actualizamos map_x para que guarde la celda de impacto
-		(o la que acabamos de mirar, impacte o no).
+	If it's a wall or a closed door return 'hit'.
+	If it's a door set 'is_door'. If it's an opened one set 'is_opened'.
+*/
+int	hit_detection(char elem, int map_x, int map_y, t_rend *rend)
+{
+	int	hit;
+
+	hit = 0;
+	if (elem == '1' || elem == '2' || (elem == '3' && rend->first_loop))
+		hit = 1;
+	rend->is_door = (elem == '2') || (elem == '3');
+	if (elem == '3')
+		rend->is_opened = 1;
+	return (hit);
+}
+
+/*
+	If it's a wall or a door return 'hit'.
+	If it's a door set 'is_door'. If it's an opened one set 'is_opened'.
+
+int	hit_detection(char elem, t_rend *rend)
+{
+	int	hit;
+
+	hit = 0;
+	if (elem == '1' || elem == '2' || elem == '3')
+	{
+		hit = 1;
+		rend->is_door = (elem == '2') || (elem == '3');
+		if (rend->is_door)
+			rend->is_opened = elem == '3';
+	}
+	return (hit);
+}*/
+
+/*
+	Loop until hit:
+	- Find if the closer border is in the 'x' axis or in the 'y' axis.
+	- Update 'side_dist' to find a further grid on the next iteration.
+	- Update 'map_x' to save the posible hit cell.
+	- Determine the side orientation of the posible hit.
+	- Check for actual hit.
 */
 void	dda(t_cub *game, t_rend *rend, int map_x, int map_y)
 {
@@ -49,12 +85,7 @@ void	dda(t_cub *game, t_rend *rend, int map_x, int map_y)
 			map_y += rend->step_y;
 			rend->side = 1;
 		}
-		if (game->map.matrix[map_y][map_x] == '1'
-				|| game->map.matrix[map_y][map_x] == '2')
-		{
-			hit = 1;
-			rend->is_door = (game->map.matrix[map_y][map_x] == '2');
-		}
+		hit = hit_detection(game->map.matrix[map_y][map_x], map_y, map_x, rend);
 	}
 	calc_perp_dist(game, rend, map_x, map_y);
 }

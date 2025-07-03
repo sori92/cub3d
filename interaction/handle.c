@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:23:46 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/02 17:18:39 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 15:19:01 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,28 @@ int	loop_counter(t_cub *game)
 /*
 	If the door is in front of the player and inside the dist_door limits,
 	the door is changed in the minimap/2d matrix.
+	There is a little delay of 200 ms to avoid open-close loops.
 */
 static int	open_door(t_cub *game)
 {
 	int		new_x;
 	int		new_y;
+	long	curr_time;
 
+	curr_time = get_time_ms();
+	if (curr_time - game->keys.last_input_time < 200)
+		return (0);
+	game->keys.last_input_time = curr_time;
 	new_x = game->plyr.pos_x + game->plyr.dir_x;
 	new_y = game->plyr.pos_y + game->plyr.dir_y;
 	if (game->map.matrix[new_y][new_x] == '2')
 	{
 		game->map.matrix[new_y][new_x] = '3';
+		return (1);
+	}
+	if (game->map.matrix[new_y][new_x] == '3')
+	{
+		game->map.matrix[new_y][new_x] = '2';
 		return (1);
 	}
 	return (0);

@@ -2,7 +2,7 @@ F 70, 50,       30
 WE ./textures/West.xpm
   		NO           ./textures/North.xpm    
 EA ./textures/East.xpm
-
+O ./textures/Opened.xpm
 SO ./textures/South.xpm
 D ./textures/Door.xpm
 

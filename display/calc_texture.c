@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:33:10 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/01 18:12:30 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 15:08:20 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ void	calc_texture_size(t_rend *rend)
 t_tx	*texture_orientation(t_cub *game, t_rend *rend)
 {
 	if (rend->is_door)
+	{
+		if (rend->is_opened)
+			return (&game->tex.opened);
 		return (&game->tex.door);
+	}
 	if (rend->side == 0)
 	{
 		if (rend->step_x > 0)

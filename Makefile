@@ -1,8 +1,8 @@
 SRC = main.c\
 	print_error.c\
-	input_hooks.c\
 	init/init_null.c\
 	init/init.c\
+	init/init_player.c\
 	parsers/clean_nl.c\
 	parsers/flood_fill.c\
 	parsers/texture_parser.c\
@@ -19,17 +19,18 @@ SRC = main.c\
 	utils/ft_arraylen.c\
 	utils/ft_printarray.c\
 	utils/ft_arraydup.c\
+	utils/get_time.c\
+	interaction/input_hooks.c\
+	interaction/handle.c\
+	interaction/movements.c\
+	interaction/close_win.c\
 	display/init_display.c\
-	display/close_win.c\
-	display/handle.c\
-	display/movements.c\
 	display/draw.c\
 	display/draw_map.c\
 	display/render.c\
 	display/dda.c\
 	display/calc_texture.c\
 	display/weapon_anims.c\
-	player/init_player.c\
 
 CC = cc
 OBJS = $(SRC:.c=.o)

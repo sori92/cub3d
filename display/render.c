@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:07:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/06/30 15:41:49 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:10:33 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ void	render(t_cub *game)
 	t_rend	rend;
 	t_tx	*tex;
 
+	rend.is_opened = 0;
+	rend.first_loop = 1;
 	x = 0;
 	while (x < WIDTH)
 	{
@@ -129,5 +131,27 @@ void	render(t_cub *game)
 				+ rend.draw.line_height / 2) * rend.draw.step;
 		draw_loop(x, tex, game, &rend);
 		x++;
+	}
+	if (rend.is_opened)
+	{
+		rend.first_loop = 0;
+		x = 0;
+		while (x < WIDTH)
+		{
+			rend.camera_x = 2.0 * x / (double)WIDTH - 1.0;
+			rend.ray_dir_x = game->plyr.dir_x + game->plyr.plane_x * rend.camera_x;
+			rend.ray_dir_y = game->plyr.dir_y + game->plyr.plane_y * rend.camera_x;
+			calc_delta_distances(&rend);
+			calc_side_distances(game, &rend, game->plyr.pos_x, game->plyr.pos_y);
+			dda(game, &rend, game->plyr.pos_x, game->plyr.pos_y);
+			calc_texture_size(&rend);
+			tex = texture_orientation(game, &rend);
+			calc_texture_collision_point(tex, game, &rend);
+			rend.draw.step = (double)tex->height / rend.draw.line_height;
+			rend.draw.tex_pos = (rend.draw.draw_start - HEIGHT / 2
+					+ rend.draw.line_height / 2) * rend.draw.step;
+			draw_loop(x, tex, game, &rend);
+			x++;
+		}
 	}
 }

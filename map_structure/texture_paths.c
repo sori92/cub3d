@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:34:42 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/02 17:30:18 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 13:11:52 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*fill_path(char **line, char *cardinal, t_cub *game)
 		free_array(line, ft_arraylen(line));
 		free_all(game);
 		print_error("Texture paths must contain two arguments\n");
-		exit(ft_putstr_fd("[NO/SO/WE/EA/D] [./textures/file]\n", 2));
+		exit(ft_putstr_fd("[NO/SO/WE/EA/D/O] [./textures/file]\n", 2));
 	}
 	if (ft_strcmp(line[0], cardinal) == 0)
 	{
@@ -98,6 +98,8 @@ void	asign_paths(t_cub *game, char **line)
 		game->map.paths.ea = fill_path(line, "EA", game);
 	if (!game->map.paths.door)
 		game->map.paths.door = fill_path(line, "D", game);
+	if (!game->map.paths.opened)
+		game->map.paths.opened = fill_path(line, "O", game);
 	if (!game->map.color.f)
 		game->map.color.f = fill_color(line, "F", game);
 	if (!game->map.color.c)
@@ -112,7 +114,7 @@ size_t	cpy_paths_and_colors(t_cub *game)
 
 	i = 0;
 	l = 0;
-	while (game->map.file_array[l] && i < 7)
+	while (game->map.file_array[l] && i < 8)
 	{
 		line = split_by_space(game->map.file_array[l]);
 		if (!line)

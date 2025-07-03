@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:13:16 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/02 17:36:50 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 13:15:00 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ static void	init_tex_aux(t_cub *game)
 	game->tex.door.addr
 		= mlx_get_data_addr(game->tex.door.img, &game->tex.door.bpp,
 			&game->tex.door.line_length, &game->tex.door.endian);
+	game->tex.opened.img
+		= mlx_xpm_file_to_image(game->mlx.ptr, game->map.paths.opened,
+			&game->tex.opened.width, &game->tex.opened.height);
+	game->tex.opened.addr
+		= mlx_get_data_addr(game->tex.opened.img, &game->tex.opened.bpp,
+			&game->tex.opened.line_length, &game->tex.opened.endian);
 }
 
 static void	init_tex(t_cub *game)

@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:05:12 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/02 17:55:15 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 15:40:24 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	init_map_null(t_cub *game)
 	game->map.paths.ea = NULL;
 	game->map.paths.we = NULL;
 	game->map.paths.door = NULL;
+	game->map.paths.opened = NULL;
 	game->map.color.f = NULL;
 	game->map.color.floor.r = 0;
 	game->map.color.floor.g = 0;
@@ -57,6 +58,7 @@ void	init_null(t_cub *game)
 	game->keys.l = 0;
 	game->keys.r = 0;
 	game->keys.open = 0;
+	game->keys.last_input_time = get_time_ms();
 	game->input_cnt = 0;
 	game->offsets[0] = 0;
 	game->offsets[1] = 0;

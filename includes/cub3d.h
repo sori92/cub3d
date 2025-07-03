@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/02 17:20:43 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:10:55 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string.h>
 # include <fcntl.h>
 # include <stddef.h>
+# include <sys/time.h>
 # include <math.h>
 # include "map.h"
 # include "player.h"
@@ -37,13 +38,14 @@
 
 typedef struct s_keys
 {
-	int	w;
-	int	s;
-	int	a;
-	int	d;
-	int	r;
-	int	l;
-	int	open;
+	int		w;
+	int		s;
+	int		a;
+	int		d;
+	int		r;
+	int		l;
+	int		open;
+	long	last_input_time;
 }	t_keys;
 
 typedef struct s_tx
@@ -64,6 +66,7 @@ typedef struct s_imges
 	t_tx	east;
 	t_tx	west;
 	t_tx	door;
+	t_tx	opened;
 }	t_imges;
 
 typedef struct s_anims
@@ -102,6 +105,8 @@ typedef struct s_rend
 	int		step_y;
 	int		side;
 	int		is_door;
+	int		is_opened;
+	int		first_loop;
 	double	perp_dist;
 	t_draw	draw;
 }	t_rend;
@@ -125,6 +130,7 @@ char	**split_by_space(char *str);
 size_t	ft_arraylen(char **array);
 void	ft_printarray(char **array, char *name);
 char	**ft_arraydup(char **array);
+long	get_time_ms();
 //
 
 // ERRORS
@@ -164,6 +170,7 @@ void	update_planes(t_cub *game);
 // DISPLAY
 void	render(t_cub *game);
 void	dda(t_cub *game, t_rend *rend, int map_x, int map_y);
+void	calc_perp_dist(t_cub *game, t_rend *rend, int map_x, int map_y);
 void	calc_texture_size(t_rend *rend);
 t_tx	*texture_orientation(t_cub *game, t_rend *rend);
 void	calc_texture_collision_point(t_tx *tex, t_cub *game, t_rend *rend);

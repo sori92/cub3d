@@ -6,11 +6,11 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:47:09 by dsoriano          #+#    #+#             */
-/*   Updated: 2025/07/02 12:57:01 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 13:04:19 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 int	key_press(int key, t_cub *game)
 {
