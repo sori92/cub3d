@@ -6,7 +6,7 @@
 /*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:26:51 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/03 16:09:41 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:13:54 by dsoriano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	calc_perp_dist(t_cub *game, t_rend *rend, int map_x, int map_y)
 	If it's a wall or a closed door return 'hit'.
 	If it's a door set 'is_door'. If it's an opened one set 'is_opened'.
 */
-int	hit_detection(char elem, int map_x, int map_y, t_rend *rend)
+int	hit_detection(char elem, t_rend *rend)
 {
 	int	hit;
 
@@ -85,7 +85,7 @@ void	dda(t_cub *game, t_rend *rend, int map_x, int map_y)
 			map_y += rend->step_y;
 			rend->side = 1;
 		}
-		hit = hit_detection(game->map.matrix[map_y][map_x], map_y, map_x, rend);
+		hit = hit_detection(game->map.matrix[map_y][map_x], rend);
 	}
 	calc_perp_dist(game, rend, map_x, map_y);
 }
