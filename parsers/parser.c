@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:10:38 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/02 18:43:12 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/03 19:16:37 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	check_map_size(t_cub *game, char **matrix)
 {
 	size_t	y;
 	int		err;
-	
+
 	y = 0;
 	err = 0;
 	if (ft_arraylen(matrix) > 42)
@@ -77,9 +77,9 @@ void	check_map_size(t_cub *game, char **matrix)
 		{
 			print_error("Width of the map too hard to handle\n");
 			err = 1;
-			break;
+			break ;
 		}
-		y++;	
+		y++;
 	}
 	if (err)
 	{

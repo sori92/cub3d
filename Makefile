@@ -28,6 +28,7 @@ SRC = main.c\
 	display/draw.c\
 	display/draw_map.c\
 	display/render.c\
+	display/render_aux.c\
 	display/dda.c\
 	display/calc_texture.c\
 	display/weapon_anims.c\

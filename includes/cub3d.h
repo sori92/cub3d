@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/03 16:10:55 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/03 19:44:15 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define HEIGHT 1080
 # define PI 3.14159265358979323846
 # define INPUT_DELAY 0.1
-# define DARK_TRESHOLD 5
+# define DARK_TRESHOLD 8
 
 # define CELL_SIZE 15
 # define PLYR_CELL 7.5
@@ -130,7 +130,7 @@ char	**split_by_space(char *str);
 size_t	ft_arraylen(char **array);
 void	ft_printarray(char **array, char *name);
 char	**ft_arraydup(char **array);
-long	get_time_ms();
+long	get_time_ms(void);
 //
 
 // ERRORS
@@ -168,20 +168,26 @@ void	update_planes(t_cub *game);
 //
 
 // DISPLAY
-void	render(t_cub *game);
-void	dda(t_cub *game, t_rend *rend, int map_x, int map_y);
-void	calc_perp_dist(t_cub *game, t_rend *rend, int map_x, int map_y);
-void	calc_texture_size(t_rend *rend);
 t_tx	*texture_orientation(t_cub *game, t_rend *rend);
-void	calc_texture_collision_point(t_tx *tex, t_cub *game, t_rend *rend);
 void	draw_floor_and_ceilling(t_cub *game);
 void	draw_cell(t_cub *game, size_t y, size_t x, int color);
 void	draw_back(t_cub *game, size_t y, size_t x, int color);
 void	draw_map(t_cub *game);
 void	draw_win(t_cub *game);
-void	pixel_put(size_t x, size_t y, int color, t_cub *game);
 void	draw_weapon(t_cub *game);
+void	pixel_put(size_t x, size_t y, int color, t_cub *game);
+//
+
+// RENDER
+void	render(t_cub *game);
+void	dda(t_cub *game, t_rend *rend, int map_x, int map_y);
+void	calc_delta_distances(t_rend *rend);
+void	calc_perp_dist(t_cub *game, t_rend *rend, int map_x, int map_y);
+void	calc_texture_size(t_rend *rend);
+void	calc_texture_collision_point(t_tx *tex, t_cub *game, t_rend *rend);
 void	calc_texture_darkness(double coll_point, t_tx *tex, t_rend *rend);
+void	calc_side_distances(t_cub *game, t_rend *rend, int map_x, int map_y);
+int		color_darkness(int color, double darkness);
 //
 
 // PARSERS

@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:47:09 by dsoriano          #+#    #+#             */
-/*   Updated: 2025/07/03 18:50:51 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/03 19:16:04 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,3 @@ int	mouse_rot(int x, int y, t_cub *game)
 	launch_rot(delta_x, game);
 	return (1);
 }
-

@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 23:25:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/03 18:22:08 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/03 19:17:12 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	pixel_put(size_t x, size_t y, int color, t_cub *game)
 	if ((color & 0x00FFFFFF) != 0x00FF00FF)
 	{
 		dst = game->mlx.addr
-		+ (y * game->mlx.line_length + x * (game->mlx.bpp / 8));
+			+ (y * game->mlx.line_length + x * (game->mlx.bpp / 8));
 		*(unsigned int *)dst = color;
 	}
 }
