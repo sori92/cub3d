@@ -6,16 +6,37 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:19:48 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/05/30 14:47:34 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/04 11:00:51 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+int	wrong_type(char *texture)
+{
+	if (-1 != open(texture, __O_DIRECTORY))
+	{
+		
+		print_error("Texture path: ");
+		ft_putstr_fd(texture, 2);
+		ft_putendl_fd(": Is a directory", 2);
+		return (1);
+	}
+	if (!extension_check(texture, ".xpm"))
+	{
+		print_error(texture);
+		ft_putendl_fd(": Wrong texture extension.", 2);
+		return (1);
+	}
+	return (0);
+}
+
 int	wrong_texture_file(char *texture, char *type)
 {
 	int	fd;
 
+	if (wrong_type(texture))
+		return(1);
 	fd = open(texture, O_RDONLY);
 	if (fd < 0)
 	{

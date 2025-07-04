@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:08:48 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/02 17:19:55 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/04 11:10:01 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	init_map_struct(t_cub *game)
 	l = cpy_paths_and_colors(game);
 	if (!game->map.paths.no || !game->map.paths.so || !game->map.paths.we
 		|| !game->map.paths.ea || !game->map.paths.door
+		|| !game->map.paths.opened
 		|| !game->map.color.f || !game->map.color.c)
 	{
 		free_all(game);
