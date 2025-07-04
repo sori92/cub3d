@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:19:48 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/04 11:12:39 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/04 12:00:24 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	wrong_type(char *texture)
 {
-	if (-1 != open(texture, __O_DIRECTORY))mv mi
+	if (-1 != open(texture, __O_DIRECTORY))
 	{
 		print_error("Texture path: ");
 		ft_putstr_fd(texture, 2);
