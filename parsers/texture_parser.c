@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:19:48 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/04 11:00:51 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/04 11:12:39 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int	wrong_type(char *texture)
 {
-	if (-1 != open(texture, __O_DIRECTORY))
+	if (-1 != open(texture, __O_DIRECTORY))mv mi
 	{
-		
 		print_error("Texture path: ");
 		ft_putstr_fd(texture, 2);
 		ft_putendl_fd(": Is a directory", 2);
@@ -36,7 +35,7 @@ int	wrong_texture_file(char *texture, char *type)
 	int	fd;
 
 	if (wrong_type(texture))
-		return(1);
+		return (1);
 	fd = open(texture, O_RDONLY);
 	if (fd < 0)
 	{
