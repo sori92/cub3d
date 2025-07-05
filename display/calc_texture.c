@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:33:10 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/03 15:08:20 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/05 09:57:35 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_tx	*texture_orientation(t_cub *game, t_rend *rend)
 {
 	if (rend->is_door)
 	{
-		if (rend->is_opened)
+		if (rend->is_opened && !rend->first_loop)
 			return (&game->tex.opened);
 		return (&game->tex.door);
 	}
