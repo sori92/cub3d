@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:07:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/03 19:43:24 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/05 20:26:06 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,43 +49,42 @@ void	draw_loop(int x, t_tx *tex, t_cub *game, t_rend *rend)
 		Every few pixels on the screen we advance one in the texture.
 	- Where the texture starts (case it's close to the lower of the screen).
 */
-void	render_loop(t_rend *rend, t_cub *game)
+void	ray_cast(int x, t_rend *rend, t_cub *game)
 {
-	int		x;
 	t_tx	*tex;
 
-	x = 0;
-	while (x < WIDTH)
-	{
-		rend->camera_x = 2.0 * x / (double)WIDTH - 1.0;
-		rend->ray_dir_x = game->plyr.dir_x + game->plyr.plane_x
-			* rend->camera_x;
-		rend->ray_dir_y = game->plyr.dir_y + game->plyr.plane_y
-			* rend->camera_x;
-		calc_delta_distances(rend);
-		calc_side_distances(game, rend, game->plyr.pos_x, game->plyr.pos_y);
-		dda(game, rend, game->plyr.pos_x, game->plyr.pos_y);
-		calc_texture_size(rend);
-		tex = texture_orientation(game, rend);
-		calc_texture_collision_point(tex, game, rend);
-		rend->draw.step = (double)tex->height / rend->draw.line_height;
-		rend->draw.tex_pos = (rend->draw.draw_start - HEIGHT / 2
-				+ rend->draw.line_height / 2) * rend->draw.step;
-		draw_loop(x, tex, game, rend);
-		x++;
-	}
+
+	rend->camera_x = 2.0 * x / (double)WIDTH - 1.0;
+	rend->ray_dir_x = game->plyr.dir_x + game->plyr.plane_x
+		* rend->camera_x;
+	rend->ray_dir_y = game->plyr.dir_y + game->plyr.plane_y
+		* rend->camera_x;
+	calc_delta_distances(rend);
+	calc_side_distances(game, rend, game->plyr.pos_x, game->plyr.pos_y);
+	dda(game, rend, game->plyr.pos_x, game->plyr.pos_y);
+	calc_texture_size(rend);
+	tex = texture_orientation(game, rend);
+	calc_texture_collision_point(tex, game, rend);
+	rend->draw.step = (double)tex->height / rend->draw.line_height;
+	rend->draw.tex_pos = (rend->draw.draw_start - HEIGHT / 2
+			+ rend->draw.line_height / 2) * rend->draw.step;
+	draw_loop(x, tex, game, rend);
 }
 
 void	render(t_cub *game)
 {
+	int		x;
 	t_rend	rend;
 
-	rend.is_opened = 0;
-	rend.first_loop = 1;
-	render_loop(&rend, game);
-	if (rend.is_opened)
+	x = 0;
+	while (x < WIDTH)
 	{
+		rend.is_opened = 0;
+		rend.first_loop = 1;
+		ray_cast(x, &rend, game);
 		rend.first_loop = 0;
-		render_loop(&rend, game);
+		if (rend.is_opened)
+			ray_cast(x, &rend, game);
+		x++;
 	}
 }
