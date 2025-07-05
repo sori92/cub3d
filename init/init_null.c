@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_null.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:05:12 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/03 15:40:24 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/05 10:04:27 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	init_null(t_cub *game)
 	game->keys.open = 0;
 	game->keys.last_input_time = get_time_ms();
 	game->input_cnt = 0;
+	game->can_open = 1;
 	game->offsets[0] = 0;
 	game->offsets[1] = 0;
 }

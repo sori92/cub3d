@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:29:56 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/03 19:44:15 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/05 10:03:28 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_cub
 	t_mlx	mlx;
 	t_map	map;
 	t_anims	weapon;
+	int		can_open;
 	int		offsets[2];
 	double	input_cnt;
 }	t_cub;

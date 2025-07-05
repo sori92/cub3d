@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:23:46 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/03 15:19:01 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/05 10:11:46 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	loop_counter(t_cub *game)
 	the door is changed in the minimap/2d matrix.
 	There is a little delay of 200 ms to avoid open-close loops.
 */
-static int	open_door(t_cub *game)
+static void	open_door(t_cub *game)
 {
 	int		new_x;
 	int		new_y;
@@ -32,21 +32,22 @@ static int	open_door(t_cub *game)
 
 	curr_time = get_time_ms();
 	if (curr_time - game->keys.last_input_time < 200)
-		return (0);
+		return ;
 	game->keys.last_input_time = curr_time;
 	new_x = game->plyr.pos_x + game->plyr.dir_x;
 	new_y = game->plyr.pos_y + game->plyr.dir_y;
-	if (game->map.matrix[new_y][new_x] == '2')
+	if (game->map.matrix[new_y][new_x] == '2' && game->can_open)
 	{
 		game->map.matrix[new_y][new_x] = '3';
-		return (1);
+		game->can_open = 0;
+		return ;
 	}
 	if (game->map.matrix[new_y][new_x] == '3')
 	{
+		game->can_open = 1;
 		game->map.matrix[new_y][new_x] = '2';
-		return (1);
+		return ;
 	}
-	return (0);
 }
 
 int	handle_keys(t_cub *game)
@@ -67,8 +68,10 @@ int	handle_keys(t_cub *game)
 		else if (game->keys.r)
 			rotation(game, -1);
 		else if (game->keys.open)
-			if (open_door(game))
-				draw_win(game);
+		{
+			open_door(game);
+			draw_win(game);
+		}
 		update_planes(game);
 		game->input_cnt = 0;
 	}
