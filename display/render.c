@@ -6,7 +6,7 @@
 /*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 19:07:15 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/05 20:26:06 by jrubio-m         ###   ########.fr       */
+/*   Updated: 2025/07/05 20:28:30 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	draw_loop(int x, t_tx *tex, t_cub *game, t_rend *rend)
 void	ray_cast(int x, t_rend *rend, t_cub *game)
 {
 	t_tx	*tex;
-
 
 	rend->camera_x = 2.0 * x / (double)WIDTH - 1.0;
 	rend->ray_dir_x = game->plyr.dir_x + game->plyr.plane_x
