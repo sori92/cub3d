@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsoriano <dsoriano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrubio-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:23:46 by jrubio-m          #+#    #+#             */
-/*   Updated: 2025/07/06 20:16:18 by dsoriano         ###   ########.fr       */
+/*   Updated: 2025/07/07 13:03:18 by jrubio-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@ static void	open_door(t_cub *game)
 	game->keys.last_input_time = curr_time;
 	new_x = game->plyr.pos_x + game->plyr.dir_x;
 	new_y = game->plyr.pos_y + game->plyr.dir_y;
-	if (game->map.matrix[new_y][new_x] == '2' && game->can_open)
+	if (game->map.matrix[new_y][new_x] == '2')
 	{
 		game->map.matrix[new_y][new_x] = '3';
 		return ;
 	}
 	if (game->map.matrix[new_y][new_x] == '3')
 	{
-		game->can_open = 1;
 		game->map.matrix[new_y][new_x] = '2';
 		return ;
 	}
