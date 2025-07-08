@@ -115,6 +115,10 @@ void	check_texture_routes_and_colors(t_cub *game)
 		error = 1;
 	if (wrong_texture_file(game->map.paths.ea, "EA"))
 		error = 1;
+	if (wrong_texture_file(game->map.paths.door, "D"))
+		error = 1;
+	if (wrong_texture_file(game->map.paths.opened, "O"))
+		error = 1;
 	if (!check_and_asign_colors(game))
 		error = 1;
 	if (error == 0)
